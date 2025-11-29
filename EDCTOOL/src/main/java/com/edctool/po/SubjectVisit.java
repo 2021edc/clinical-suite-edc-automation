@@ -27,7 +27,10 @@ public class SubjectVisit extends SeleniumActions {
 	private WebElement btnFormCancel;
 
 	@FindBy(css = "td.pointer")
-	private List<WebElement> lnkSubjectId;
+	private List<WebElement> lstSubjectId;
+	
+	@FindBy(css = "td.pointer")
+	private WebElement lnkSubjectId;
 
 	@FindBy(css = "input[placeholder='Search forms...']")
 	private WebElement txtSearch;
@@ -37,10 +40,19 @@ public class SubjectVisit extends SeleniumActions {
 	
 	@FindBy(css="i.forms-clear-btn")
 	private WebElement btnClear;
+	
+	@FindBy(css="input[id='155588']")
+	private WebElement txtTextView;
+	
+	@FindBy(css="textarea[placeholder='Test']")
+	private WebElement txtTextArea;
+	
+	@FindBy(css="input[name='Number']")
+	private WebElement txtNumber;
 
 	public void clickOnSubjectId(String subjectId) {
-		waitForAllElementVisible(lnkSubjectId);
-		selectValueFromList(lnkSubjectId, subjectId);
+		waitForAllElementVisible(lstSubjectId);
+		selectValueFromList(lstSubjectId, subjectId);
 	}
 
 	public void verifyResetButton() {
@@ -62,5 +74,29 @@ public class SubjectVisit extends SeleniumActions {
 	
 	public void verifyEmptyTextbox() {
 		assertUtils.isElementDisplayed(txtSearch);
+	}
+	
+	public void clickOnCloseButton() {
+		clickOnElement(btnFormCancel);
+	}
+	
+	public void verifyFormClose() {
+		assertUtils.isElementDisplayed(lnkSubjectId);
+	}
+	
+	public void enterTextView(String textView) {
+		enterTextIntoTextbox(txtTextView, textView);
+	}
+	
+	public void enterTextArea(String textArea) {
+		enterTextIntoTextbox(txtTextArea, textArea);
+	}
+	
+	public void enterTextNumber(String textNumber) {
+		enterTextIntoTextbox(txtNumber, textNumber);
+	}
+	
+	public void clickOnSaveButton() {
+		clickOnElement(btnFormSave);
 	}
 }

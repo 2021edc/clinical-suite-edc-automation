@@ -11,7 +11,7 @@ import org.junit.platform.suite.api.Suite;
 @SelectClasspathResource("Features")
 @ConfigurationParameter(key = "cucumber.glue", value = "steps_definations")
 @ConfigurationParameter(key = "cucumber.plugin", value = "pretty, html:target/cucumber-regression-test-report.html")
-@ConfigurationParameter(key="cucumber.filter.tags", value = "@regression")
+
 
 public class Regression_TestRunner {
 
