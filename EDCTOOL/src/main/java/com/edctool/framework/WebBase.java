@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 
 public class WebBase {
 	
@@ -16,7 +17,10 @@ public class WebBase {
 			driver = new FirefoxDriver();
 		} else if(browserName.toLowerCase().contains("edge")) {
 			driver = new EdgeDriver();
-		} else {
+		} else if(browserName.toLowerCase().contains("safari")) {
+			driver = new SafariDriver();
+		}
+		else {
 			System.out.println("Please enter the valid browser name.");
 		}
 	}

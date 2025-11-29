@@ -74,11 +74,28 @@ public class Steps_Login {
 		loginPage.selectStudy();
 		loginPage.selectValueFromDropdown(option);
 	}
-	
+
 	@When("user click on {string} from role dropdown")
 	public void user_click_on_from_role_dropdown(String option) {
 		loginPage.selectRole();
 		loginPage.selectValueFromDropdown(option);
+	}
+
+	@When("user enter the {string} in study textbox")
+	public void user_enter_the_in_study_textbox(String studyText) {
+		loginPage.selectStudy();
+		loginPage.enterStudy(studyText);
+	}
+
+	@When("user enter the {string} in role textbox")
+	public void user_enter_the_in_role_textbox(String roleText) {
+		loginPage.selectRole();
+		loginPage.enterRole(roleText);
+	}
+
+	@Then("verify that {string} error message should be displayed while enter incorrect term")
+	public void verify_that_error_message_should_be_displayed_while_enter_incorrect_term(String message) {
+		loginPage.validateErrorMessage(message);
 	}
 
 }

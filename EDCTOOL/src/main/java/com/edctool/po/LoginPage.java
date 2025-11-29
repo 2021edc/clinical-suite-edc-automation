@@ -48,6 +48,16 @@ public class LoginPage extends SeleniumActions {
 	@FindBy(css="div[role='option'] span")
 	private List<WebElement> selectOption;
 
+	@FindBy(css="[ng-reflect-placeholder='Select Study'] input[type='text']")
+	private WebElement txtStudy;
+	
+	@FindBy(css="[ng-reflect-placeholder='Select Role'] input[type='text']")
+	private WebElement txtRole;
+	
+	@FindBy(css="div.ng-option")
+	private WebElement lblErrorOption;
+	
+
 	public void verifyLoginPageHeader(String header) {
 		assertUtils.assertEquals(getVisibleText(loginPageHeader), header);
 	}
@@ -101,15 +111,18 @@ public class LoginPage extends SeleniumActions {
 	}
 	
 	public void selectValueFromDropdown(String option) {
-		for (WebElement element : selectOption) {
-			String getOption=element.getText();
-			
-			if(getOption.equals(option)) {
-				element.click();
-				break;
-			} else {
-				System.out.println(option + " is not matched with " + getOption +". So, checking again...");
-			}
-		}
+		selectValueFromList(selectOption, option);
+	}
+	
+	public void enterStudy(String study) {
+		enterTextIntoTextbox(txtStudy, study);
+	}
+	
+	public void enterRole(String role) {
+		enterTextIntoTextbox(txtRole, role);
+	}
+	
+	public void validateErrorMessage(String message) {
+		assertUtils.assertEquals(getVisibleText(lblErrorOption), message);
 	}
 }
