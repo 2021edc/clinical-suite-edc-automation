@@ -5,7 +5,7 @@ import com.edctool.po.SubjectVisit;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Steps_Visit {
+public class Steps_SubjectVisit {
 
 	SubjectVisit subjectVisit = new SubjectVisit();
 
@@ -67,6 +67,31 @@ public class Steps_Visit {
 	@When("user click on save button to save the form")
 	public void user_click_on_save_button_to_save_the_form() {
 		subjectVisit.clickOnSaveButton();
+	}
+
+	@Then("verify that number all field query should be given")
+	public void verify_that_number_all_field_query_should_be_given() {
+		subjectVisit.verifyNumberAllQuery();
+	}
+
+	@Then("verify that {string} message should be displayed if mandatory fields not entered")
+	public void verify_that_message_should_be_displayed_if_mandatory_fields_not_entered(String headerMessage) {
+		subjectVisit.verifySystemGeneratedQueryLabel(headerMessage);
+	}
+	
+	@Then("verify that {string} query description should be displayed")
+	public void verify_that_query_description_should_be_displayed(String message) {
+	   subjectVisit.verifyQueryDesc(message);
+	}
+	
+	@When("user enter the {string} in Number all textbox")
+	public void user_enter_the_in_number_all_textbox(String number) {
+	  subjectVisit.enterNumberAll(number);
+	}
+
+	@Then("verify that alphabets should not be entered")
+	public void verify_that_alphabets_should_not_be_entered() {
+	   subjectVisit.verifyNumberInNumberAllTextbox();
 	}
 
 }

@@ -79,5 +79,9 @@ public class SeleniumActions extends WebBase{
 	public void clearText(WebElement element) {
 		element.clear();
 	}
+	
+	public String getAttrtibuteValue(WebElement element, String attrtibuteName) {
+		return element.getAttribute(attrtibuteName);
+	}
 
 }

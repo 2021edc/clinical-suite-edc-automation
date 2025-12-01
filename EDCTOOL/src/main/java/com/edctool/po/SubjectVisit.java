@@ -49,6 +49,21 @@ public class SubjectVisit extends SeleniumActions {
 	
 	@FindBy(css="input[name='Number']")
 	private WebElement txtNumber;
+	
+	@FindBy(xpath="//*[@class='modal-body']//*[text()='Number All']")
+	private WebElement numberAllQuery;
+	
+	@FindBy(css="div.modal-body p")
+	private WebElement lblSystemGeneratedQuery;
+	
+	@FindBy(css="td:nth-child(5)")
+	private WebElement lblQueryDesc;
+	
+	@FindBy(css="[name='Number All'][type='Number']")
+	private WebElement txtNumberAll;
+	
+	@FindBy(css="[name='Number All'][placeholder='Number']")
+	private WebElement txtNumberAllWithPlaceHolder;
 
 	public void clickOnSubjectId(String subjectId) {
 		waitForAllElementVisible(lstSubjectId);
@@ -98,5 +113,25 @@ public class SubjectVisit extends SeleniumActions {
 	
 	public void clickOnSaveButton() {
 		clickOnElement(btnFormSave);
+	}
+	
+	public void verifyNumberAllQuery() {
+		assertUtils.isElementDisplayed(numberAllQuery);
+	}
+	
+	public void verifySystemGeneratedQueryLabel(String headerMessage) {
+		assertUtils.assertEquals(getVisibleText(lblSystemGeneratedQuery), headerMessage);
+	}
+	
+	public void verifyQueryDesc(String message) {
+		assertUtils.assertContainsMessage(lblQueryDesc, message);
+	}
+	
+	public void enterNumberAll(String number) {
+		enterTextIntoTextbox(txtNumberAll, number);
+	}
+	
+	public void verifyNumberInNumberAllTextbox() {
+		assertUtils.isElementDisplayed(txtNumberAllWithPlaceHolder);
 	}
 }
