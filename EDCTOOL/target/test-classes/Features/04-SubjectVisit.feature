@@ -66,3 +66,31 @@ Feature: Subject Visit
     When user click on "MS1-813" to open the subject visit page
     And user enter the "eeee" in Number all textbox
     Then verify that alphabets should not be entered
+
+  @regression:
+  Scenario: Verify that maximum value validation message should be displayed
+    When user click on "MS1-813" to open the subject visit page
+    And user enter the "123123123123" in Number all textbox
+    And user click on save button to save the form
+    Then verify that "Maximum Value" query description should be displayed
+
+  @smoke
+  Scenario: Verify that help text icon should be displayed
+    When user click on "MS1-813" to open the subject visit page
+    Then verify that help text should be displayed
+
+  @regression:
+  Scenario: Verify that minimum value validation message should be displayed
+    When user click on "MS1-813" to open the subject visit page
+    And user enter the "test textview" in the textview textbox
+    And user enter the "1" in Number all textbox
+    And user click on save button to save the form
+    Then verify that "Minimum Value" query description should be displayed
+
+  @smoke
+  Scenario: Verify that updated date point pop up should be appear
+    When user click on "MS1-813" to open the subject visit page
+    And user enter the "test textview" in the textview textbox
+    And user enter the "7" in Number all textbox
+    And user click on save button to save the form
+    Then verify that "Updated Data Points" label pop up should be displayed

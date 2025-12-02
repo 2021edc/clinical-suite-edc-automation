@@ -78,20 +78,30 @@ public class Steps_SubjectVisit {
 	public void verify_that_message_should_be_displayed_if_mandatory_fields_not_entered(String headerMessage) {
 		subjectVisit.verifySystemGeneratedQueryLabel(headerMessage);
 	}
-	
+
 	@Then("verify that {string} query description should be displayed")
 	public void verify_that_query_description_should_be_displayed(String message) {
-	   subjectVisit.verifyQueryDesc(message);
+		subjectVisit.verifyQueryDesc(message);
 	}
-	
+
 	@When("user enter the {string} in Number all textbox")
 	public void user_enter_the_in_number_all_textbox(String number) {
-	  subjectVisit.enterNumberAll(number);
+		subjectVisit.enterNumberAll(number);
 	}
 
 	@Then("verify that alphabets should not be entered")
 	public void verify_that_alphabets_should_not_be_entered() {
-	   subjectVisit.verifyNumberInNumberAllTextbox();
+		subjectVisit.verifyNumberInNumberAllTextbox();
+	}
+
+	@Then("verify that help text should be displayed")
+	public void verify_that_help_text_should_be_displayed() {
+		subjectVisit.verifyHelpIcon();
+	}
+
+	@Then("verify that {string} label pop up should be displayed")
+	public void verify_that_label_pop_up_should_be_displayed(String label) {
+		subjectVisit.verifySystemGeneratedQueryLabel(label);
 	}
 
 }

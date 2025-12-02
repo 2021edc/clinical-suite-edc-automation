@@ -56,7 +56,7 @@ public class SubjectVisit extends SeleniumActions {
 	@FindBy(css="div.modal-body p")
 	private WebElement lblSystemGeneratedQuery;
 	
-	@FindBy(css="td:nth-child(5)")
+	@FindBy(css="#myTable  td:nth-child(5)")
 	private WebElement lblQueryDesc;
 	
 	@FindBy(css="[name='Number All'][type='Number']")
@@ -64,6 +64,9 @@ public class SubjectVisit extends SeleniumActions {
 	
 	@FindBy(css="[name='Number All'][placeholder='Number']")
 	private WebElement txtNumberAllWithPlaceHolder;
+	
+	@FindBy(css="span[title='Help Text']")
+	private WebElement lblHelpText;
 
 	public void clickOnSubjectId(String subjectId) {
 		waitForAllElementVisible(lstSubjectId);
@@ -133,5 +136,9 @@ public class SubjectVisit extends SeleniumActions {
 	
 	public void verifyNumberInNumberAllTextbox() {
 		assertUtils.isElementDisplayed(txtNumberAllWithPlaceHolder);
+	}
+	
+	public void verifyHelpIcon() {
+		assertUtils.isElementDisplayed(lblHelpText);
 	}
 }
