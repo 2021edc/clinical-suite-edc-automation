@@ -28,13 +28,26 @@ public class AssertUtils extends SeleniumActions {
 		boolean getOption = options.stream().anyMatch(opt -> opt.getText().trim().equals(expectedOption));
 		Assert.assertTrue(expectedOption + " not found in list..!", getOption);
 	}
-	
+
 	public void isElementNotDisplayed(List<WebElement> element) {
 		staticWait(2);
-		Assert.assertTrue(element.size()==0);
+		Assert.assertTrue(element.size() == 0);
 	}
-	
+
 	public void assertContainsMessage(WebElement element, String message) {
 		Assert.assertTrue(getVisibleText(element).contains(message));
+	}
+
+	public void isElementSelected(WebElement element) {
+		waitForElementVisible(element);
+		Assert.assertTrue(element.isSelected());
+	}
+
+	public void isElementDisabled(WebElement element, String attrtibuteName) {
+		Assert.assertEquals(getAttrtibuteValue(element, attrtibuteName), "true");
+	}
+
+	public void isElementEnabled(WebElement element, String attrtibuteName) {
+		Assert.assertEquals(getAttrtibuteValue(element, attrtibuteName), null);
 	}
 }

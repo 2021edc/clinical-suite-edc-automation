@@ -94,3 +94,43 @@ Feature: Subject Visit
     And user enter the "7" in Number all textbox
     And user click on save button to save the form
     Then verify that "Updated Data Points" label pop up should be displayed
+
+  @smoke
+  Scenario: Verify that user is able to select multiple options
+    When user click on "MS1-813" to open the subject visit page
+    And user select "<label>" checkbox
+
+    Examples:
+      | label |
+      | Yes   |
+      | No    |
+
+  @smoke
+  Scenario: Verify that checkbox mandatory selected
+    When user click on "MS1-813" to open the subject visit page
+    And user select "<label>" checkbox mandatory
+
+    Examples:
+      | label |
+      | Yes   |
+      | No    |
+
+  @smoke
+  Scenario: Verify that validation message should be displayed if checkox mandatory is not selected
+    When user click on "MS1-813" to open the subject visit page
+    And user enter the "test textview" in the textview textbox
+    And user enter the "7" in Number all textbox
+    And user click on save button to save the form
+    Then verify that "Checkbox Mandatory" query description should be displayed
+
+  @smoke
+  Scenario: Verify that if Radio button selected No then select dropdown should be disabled
+    When user click on "MS1-813" to open the subject visit page
+    And user select the "No" from radio button mandatory
+    Then verify that select dropdown should be disabled
+
+  @smoke
+  Scenario: Verify that if radio button is selected then select dropdown should be enabled
+    When user click on "MS1-813" to open the subject visit page
+    And user select the "Yes" from radio button mandatory
+    Then verify that select dropdown should be enabled

@@ -67,6 +67,28 @@ public class SubjectVisit extends SeleniumActions {
 	
 	@FindBy(css="span[title='Help Text']")
 	private WebElement lblHelpText;
+	
+	@FindBy(xpath="//*[text()='Checkbox']")
+	private WebElement lblChkeckbox;
+	
+	@FindBy(xpath="//*[@id='155806']//input[@type='checkbox']/following-sibling::label")
+	private List<WebElement> chkCheckbox;
+	
+	@FindBy(css="input[name='check-4']")
+	private WebElement chkCheckboxSelect;
+	
+	@FindBy(xpath="//*[@id='155829']//input[@type='checkbox']/following-sibling::label")
+	private List<WebElement> chkCheckboxMandtory;
+	
+	@FindBy(css="input[name='check-5']")
+	private WebElement chkCheckboxSelectMandtory;
+	
+	@FindBy(xpath="//*[@id='155832']//input/following-sibling::label")
+	private List<WebElement> lstRadioButton;
+	
+	@FindBy(xpath="//*[@id='155836']/div/select")
+	private WebElement ddlSelect;
+	
 
 	public void clickOnSubjectId(String subjectId) {
 		waitForAllElementVisible(lstSubjectId);
@@ -140,5 +162,31 @@ public class SubjectVisit extends SeleniumActions {
 	
 	public void verifyHelpIcon() {
 		assertUtils.isElementDisplayed(lblHelpText);
+	}
+	
+	public void verifyCheckbox() {
+		assertUtils.isElementDisplayed(lblChkeckbox);
+	}
+	
+	public void selectCheckboxOption(String option) {
+		selectValueFromList(chkCheckbox, option);
+	}
+	
+	public void selectCheckboxMandtory(String option) {
+		selectValueFromList(chkCheckboxMandtory, option);
+	}
+	
+	public void selectRadioButton(String option) {
+		selectValueFromList(lstRadioButton, option);
+	}
+	
+	public void ddlSelectDisabled() {
+		staticWait(3);
+		assertUtils.isElementDisabled(ddlSelect, "disabled");
+	}
+	
+	public void ddlSelectEnabled() {
+		staticWait(3);
+		assertUtils.isElementEnabled(ddlSelect, "disabled");
 	}
 }

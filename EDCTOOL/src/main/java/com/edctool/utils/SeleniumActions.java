@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
@@ -82,6 +83,11 @@ public class SeleniumActions extends WebBase{
 	
 	public String getAttrtibuteValue(WebElement element, String attrtibuteName) {
 		return element.getAttribute(attrtibuteName);
+	}
+	
+	public void scrollToElement(WebElement element) {
+		JavascriptExecutor js = (JavascriptExecutor)getDriver();
+		js.executeScript("arguments[0].scrollIntoView();", element);
 	}
 
 }

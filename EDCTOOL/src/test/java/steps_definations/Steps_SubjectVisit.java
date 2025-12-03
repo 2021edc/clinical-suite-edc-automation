@@ -104,4 +104,33 @@ public class Steps_SubjectVisit {
 		subjectVisit.verifySystemGeneratedQueryLabel(label);
 	}
 
+	@Then("verify that checkbox should be displayed")
+	public void verify_that_checkbox_should_be_displayed() {
+		subjectVisit.verifyCheckbox();
+	}
+
+	@When("user select {string} checkbox")
+	public void user_select_checkbox(String option) {
+		subjectVisit.selectCheckboxOption(option);
+	}
+
+	@When("user select {string} checkbox mandatory")
+	public void user_select_checkbox_mandatory(String option) {
+		subjectVisit.selectCheckboxMandtory(option);
+	}
+
+	@When("user select the {string} from radio button mandatory")
+	public void user_select_the_from_radio_button_mandatory(String option) {
+		subjectVisit.selectRadioButton(option);
+	}
+
+	@Then("verify that select dropdown should be disabled")
+	public void verify_that_select_dropdown_should_be_disabled() {
+		subjectVisit.ddlSelectDisabled();
+	}
+
+	@Then("verify that select dropdown should be enabled")
+	public void verify_that_select_dropdown_should_be_enabled() {
+		subjectVisit.ddlSelectEnabled();
+	}
 }
