@@ -20,7 +20,7 @@ public class SubjectVisit extends SeleniumActions {
 	@FindBy(css = "span:nth-child(4) > button")
 	private WebElement btnReset;
 
-	@FindBy(css = "span:nth-child(2) > button")
+	@FindBy(css = "span:nth-child(1) > button")
 	private WebElement btnFormSave;
 
 	@FindBy(css = "#cancel")
@@ -88,6 +88,18 @@ public class SubjectVisit extends SeleniumActions {
 	
 	@FindBy(xpath="//*[@id='155836']/div/select")
 	private WebElement ddlSelect;
+	
+	@FindBy(xpath="//*[@id='155836']//select/option")
+	private List<WebElement> lstOPtions;
+	
+	@FindBy(css="h5.modal-title")
+	private WebElement confirmationTitle;
+	
+	@FindBy(css="div.modal-footer button.btn-outline-primary")
+	private WebElement btnYesConformation;
+	
+	@FindBy(css="div.modal-footer button.btn-outline-danger")
+	private WebElement btnCancelConfirmation;
 	
 
 	public void clickOnSubjectId(String subjectId) {
@@ -177,6 +189,8 @@ public class SubjectVisit extends SeleniumActions {
 	}
 	
 	public void selectRadioButton(String option) {
+		waitForAllElementVisible(lstRadioButton);
+		scrollToElement(ddlSelect);
 		selectValueFromList(lstRadioButton, option);
 	}
 	
@@ -188,5 +202,25 @@ public class SubjectVisit extends SeleniumActions {
 	public void ddlSelectEnabled() {
 		staticWait(3);
 		assertUtils.isElementEnabled(ddlSelect, "disabled");
+	}
+	
+	public void clickOnDropdown() {
+		clickOnElement(ddlSelect);
+	}
+	
+	public void verifyOptionInList(String option) {
+		assertUtils.assertValueFromList(lstOPtions, option);
+	}
+	
+	public void verifyConfirmationTitle() {
+		assertUtils.isElementDisplayed(confirmationTitle);
+	}
+	
+	public void verifyCancelButtonInConfirmationPopup() {
+		assertUtils.isElementDisplayed(btnCancelConfirmation);
+	}
+	
+	public void verifyYesButtonInConfirmationPopup() {
+		assertUtils.isElementDisplayed(btnYesConformation);
 	}
 }

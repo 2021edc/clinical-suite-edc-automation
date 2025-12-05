@@ -116,7 +116,7 @@ Feature: Subject Visit
       | No    |
 
   @smoke
-  Scenario: Verify that validation message should be displayed if checkox mandatory is not selected
+  Scenario: Verify that validation message should be displayed if checkbox mandatory is not selected
     When user click on "MS1-813" to open the subject visit page
     And user enter the "test textview" in the textview textbox
     And user enter the "7" in Number all textbox
@@ -134,3 +134,48 @@ Feature: Subject Visit
     When user click on "MS1-813" to open the subject visit page
     And user select the "Yes" from radio button mandatory
     Then verify that select dropdown should be enabled
+
+  @smoke
+  Scenario: Verify that "<value>" should be displayed in dropdown
+    When user click on "MS1-813" to open the subject visit page
+    And user select the "Yes" from radio button mandatory
+    And user click on dropdown
+    Then verify that "<value>" should be displayed in dropdown
+
+    Examples:
+      | value   |
+      | Phase 1 |
+      | Phase 2 |
+      | Phase 3 |
+      | Phase 4 |
+
+  @smoke
+  Scenario: Verify that Select box mandtory validation message should be displayed
+    When user click on "MS1-813" to open the subject visit page
+    And user enter the "test textview" in the textview textbox
+    And user enter the "7" in Number all textbox
+    And user select "Yes" checkbox mandatory
+    And user select the "Yes" from radio button mandatory
+    And user click on save button to save the form
+    Then verify that "Please select value from select box" query description should be displayed
+
+  @smoke
+  Scenario: Verify that confirmartion pop up should be appear after clicking on close button
+    When user click on "MS1-813" to open the subject visit page
+    And user enter the "test textview" in the textview textbox
+    And user click on close button
+    Then verify that confirmation pop up should be displayed
+
+  @smoke
+  Scenario: Verify that cancel button should be displayed in conformation popup
+    When user click on "MS1-813" to open the subject visit page
+    And user enter the "test textview" in the textview textbox
+    And user click on close button
+    Then verify that cancel button should be displayed in confirmation popup
+
+  @smoke
+  Scenario: Verify that Yes button should be displayed in conformation popup
+    When user click on "MS1-813" to open the subject visit page
+    And user enter the "test textview" in the textview textbox
+    And user click on close button
+    Then verify that Yes button should be displayed in confirmation popup

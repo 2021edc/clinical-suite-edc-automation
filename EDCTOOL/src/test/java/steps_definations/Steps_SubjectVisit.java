@@ -133,4 +133,30 @@ public class Steps_SubjectVisit {
 	public void verify_that_select_dropdown_should_be_enabled() {
 		subjectVisit.ddlSelectEnabled();
 	}
+	
+	@When("user click on dropdown")
+	public void user_click_on_dropdown() {
+	    subjectVisit.clickOnDropdown();
+	}
+
+	@Then("verify that {string} should be displayed in dropdown")
+	public void verify_that_should_be_displayed_in_dropdown(String option) {
+	    subjectVisit.verifyOptionInList(option);
+	}
+	
+	@Then("verify that confirmation pop up should be displayed")
+	public void verify_that_confirmation_pop_up_should_be_displayed() {
+	  subjectVisit.verifyConfirmationTitle();
+	}
+	
+	@Then("verify that cancel button should be displayed in confirmation popup")
+	public void verify_that_cancel_button_should_be_displayed_in_confirmation_popup() {
+	  subjectVisit.verifyCancelButtonInConfirmationPopup();
+	}
+
+	@Then("verify that Yes button should be displayed in confirmation popup")
+	public void verify_that_yes_button_should_be_displayed_in_confirmation_popup() {
+	   subjectVisit.verifyYesButtonInConfirmationPopup();
+	}
+
 }
