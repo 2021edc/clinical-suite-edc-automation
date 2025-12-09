@@ -3,12 +3,12 @@ package com.edctool.utils;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.edctool.framework.WebBase;
@@ -89,5 +89,9 @@ public class SeleniumActions extends WebBase{
 		JavascriptExecutor js = (JavascriptExecutor)getDriver();
 		js.executeScript("arguments[0].scrollIntoView();", element);
 	}
-
+	
+	public void selectValueFromDropdown(WebElement element, String text) {
+		Select dropdown= new Select(element);
+		dropdown.selectByVisibleText(text);
+	}
 }

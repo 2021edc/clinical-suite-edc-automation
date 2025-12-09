@@ -16,7 +16,7 @@ public class Steps_Background {
 
 	@After
 	public void tearDown() {
-//		webBase.closeBrowser();
+		webBase.closeBrowser();
 	}
 
 }

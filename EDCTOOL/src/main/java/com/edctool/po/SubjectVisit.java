@@ -112,7 +112,7 @@ public class SubjectVisit extends SeleniumActions {
 	}
 
 	public void enterSearchText(String searchText) {
-		staticWait(2);
+		staticWait(4);
 		enterTextIntoTextbox(txtSearch, searchText);
 	}
 	

@@ -4,6 +4,7 @@ import java.util.List;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class AssertUtils extends SeleniumActions {
 
@@ -49,5 +50,22 @@ public class AssertUtils extends SeleniumActions {
 
 	public void isElementEnabled(WebElement element, String attrtibuteName) {
 		Assert.assertEquals(getAttrtibuteValue(element, attrtibuteName), null);
+	}
+	
+	public void verifyMaxValueInDropdown(WebElement element, String text) {
+		Select select = new Select(element);
+
+		List<WebElement> options = select.getOptions();
+		boolean isPresent = false;
+
+		for (WebElement option : options) {
+		    if (option.getText().trim().equals(text)) {
+		        isPresent = true;
+		        break;
+		    }
+		}
+
+		Assert.assertFalse(text + " is present in dropdown! But it should not be.", isPresent);
+		System.out.println(text+ " is NOT displayed in dropdown as expected.");
 	}
 }

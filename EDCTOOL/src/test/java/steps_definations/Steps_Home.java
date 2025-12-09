@@ -18,7 +18,7 @@ public class Steps_Home {
 		 homePage.verifySubjectInLeftSideMenu(option);
 	}
 	
-	@When("user click on {string} opion from left side menu")
+	@When("user click on {string} option from left side menu")
 	public void user_click_on_opion_from_left_side_menu(String option) {
 	    homePage.clickOnMenuItem(option);
 	}
