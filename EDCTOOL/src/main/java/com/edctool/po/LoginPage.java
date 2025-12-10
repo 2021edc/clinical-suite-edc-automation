@@ -27,11 +27,8 @@ public class LoginPage extends SeleniumActions {
 	@FindBy(css = "button[type='submit']")
 	private WebElement btnLogin;
 
-	@FindBy(css = "div[role='alert']")
+	@FindBy(css = "div.text-danger")
 	private WebElement lblErrorMessage;
-
-	@FindBy(css = "div[aria-label='Bad credentials']")
-	private WebElement lblCredErrorMessage;
 
 	@FindBy(css = "h5.loginH5")
 	private WebElement lblStudyAndRole;
@@ -83,7 +80,7 @@ public class LoginPage extends SeleniumActions {
 	}
 
 	public void verifyIncorrectCredErrorMessage(String message) {
-		assertUtils.assertEquals(getVisibleText(lblCredErrorMessage), message);
+		assertUtils.assertEquals(getVisibleText(lblErrorMessage), message);
 	}
 
 	public void verifyStudyAndRole() {

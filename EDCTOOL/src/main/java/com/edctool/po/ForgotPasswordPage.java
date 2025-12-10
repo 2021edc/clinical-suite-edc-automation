@@ -24,7 +24,7 @@ public class ForgotPasswordPage extends SeleniumActions {
 	@FindBy(css="#name")
 	private WebElement txtEmail;
 	
-	@FindBy(css="div[role='alert']")
+	@FindBy(css="div.text-danger")
 	private WebElement lblErrorMessage;
 	
 	@FindBy(css="button[type='submit']")

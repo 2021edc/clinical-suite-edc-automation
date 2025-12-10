@@ -55,9 +55,10 @@ Feature: Subject Visit
     And user click on save button to save the form
     Then verify that number all field query should be given
 
-  @smoke
+  @smoke11
   Scenario: Verify that query description should be displayed for the number mandatory
     When user click on "MS1-813" to open the subject visit page
+    And user enter the "test textview" in the textview textbox
     And user click on save button to save the form
     Then verify that "Number All" query description should be displayed
 
@@ -70,6 +71,7 @@ Feature: Subject Visit
   @regression:
   Scenario: Verify that maximum value validation message should be displayed
     When user click on "MS1-813" to open the subject visit page
+    And user enter the "test textview" in the textview textbox
     And user enter the "123123123123" in Number all textbox
     And user click on save button to save the form
     Then verify that "Maximum Value" query description should be displayed

@@ -17,7 +17,7 @@ public class SubjectVisit extends SeleniumActions {
 
 	AssertUtils assertUtils = new AssertUtils();
 
-	@FindBy(css = "span:nth-child(4) > button")
+	@FindBy(css = "//b[normalize-space()='Reset']")
 	private WebElement btnReset;
 
 	@FindBy(css = "span:nth-child(1) > button")

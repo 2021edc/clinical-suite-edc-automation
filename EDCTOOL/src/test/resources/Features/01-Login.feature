@@ -14,20 +14,20 @@ Feature: Login
   @regression
   Scenario: Verify that validation message should be appear if username is not entered
     When user click on login button
-    Then Verify that "Username is required" error message should be displayed
+    Then Verify that "Please enter your username" error message should be displayed
 
   @regression
   Scenario: Verify that validation message should be appear if password is not entered
     When user enter the "Shreyansh" in username textbox
     And user click on login button
-    Then Verify that "Password is required" error message should be displayed
+    Then Verify that "Please enter your password" error message should be displayed
 
   @regression
   Scenario: Verify that error message appear if enter incorrect credentials
     When user enter the "<username>" in username textbox
     And user enter the "<password>" in password textbox
     And user click on login button
-    Then Verify that "Bad credentials" error message should be appear while enter incorrect credentials
+    Then Verify that "Invalid username or password" error message should be appear while enter incorrect credentials
 
     Examples:
       | username  | password |
