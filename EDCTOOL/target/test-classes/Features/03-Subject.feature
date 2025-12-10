@@ -15,7 +15,7 @@ Feature: Subject
     Then verify that "Subjects" title should be displayed
 
   @smoke
-  Scenario: Verify that Add Subject button should be displayed
+  Scenario: Verify that Add  button should be displayed
     Then verify that Add Subject button should be displayed
 
   @smoke
@@ -35,7 +35,7 @@ Feature: Subject
     And select the "ML_Site1" option from site dropdown
     And user remove the default from subject name textbox
     And user click on save button
-    Then Verify that "Please enter a subject" error message should be displayed
+    Then Verify that "Please enter a subject ID" error message should be displayed
 
   @regression
   Scenario: Verify that error message should be displayed if add the space input in subject name

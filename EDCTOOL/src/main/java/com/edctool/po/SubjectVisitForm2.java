@@ -59,6 +59,18 @@ public class SubjectVisitForm2 extends SeleniumActions {
 	@FindBy(xpath="//select[@id='155820']")
 	private WebElement ddl24Mins;
 	
+	@FindBy(xpath="//div[@id='155821']//div[@class='row']//div[1]//div[1]//select[1]")
+	private WebElement ddlHrsForTimeWithSec;
+	
+	@FindBy(xpath="//div[@id='155821']//div[2]//div[1]//select[1]")
+	private WebElement ddlMinsForTimeWithSec;
+	
+	@FindBy(xpath="//div[@class='row mb-2 bg-white field-normal-border data-entry-row-border data-entry-row-border--query']//div[3]//div[1]//select[1]")
+	private WebElement ddlSecForTimeWithSec;
+	
+	@FindBy(xpath="//div[@class='row mb-2 bg-white field-normal-border data-entry-row-border data-entry-row-border--query']//div[4]//div[1]//select[1]")
+	private WebElement ddlAMPMForTimeWithSec;
+	
 	public void clickOnForm2Link() {
 		staticWait(2);
 		clickOnElement(lnkForm2);
@@ -137,5 +149,22 @@ public class SubjectVisitForm2 extends SeleniumActions {
 	public void verifyTime24MaxMins(String mins) {
 		staticWait(2);
 		assertUtils.verifyMaxValueInDropdown(ddl24Mins, mins);
+	}
+	
+	public void selectHrsTime12WithSec(String hrs) {
+		staticWait(2);
+		selectValueFromDropdown(ddlHrsForTimeWithSec, hrs);
+	}
+	
+	public void selectMinsTime12WithSec(String mins) {
+		selectValueFromDropdown(ddlMinsForTimeWithSec, mins);
+	}
+	
+	public void selectSecTime12WithSec(String sec) {
+		selectValueFromDropdown(ddlSecForTimeWithSec, sec);
+	}
+	
+	public void selectAMPMTime12WithSec(String AMPM) {
+		selectValueFromDropdown(ddlAMPMForTimeWithSec, AMPM);
 	}
 }

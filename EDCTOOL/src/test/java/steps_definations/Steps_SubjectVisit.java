@@ -158,5 +158,4 @@ public class Steps_SubjectVisit {
 	public void verify_that_yes_button_should_be_displayed_in_confirmation_popup() {
 	   subjectVisit.verifyYesButtonInConfirmationPopup();
 	}
-
 }

@@ -93,5 +93,25 @@ public class Steps_Form2 {
 	public void verify_that_should_not_be_shown_in_time_mins_dropdown(String mins) {
 		subjectVisitForm2.verifyTime24MaxMins(mins);
 	}
+	
+	@When("user select {string} hrs from time 12 hrs with sec dropdown")
+	public void user_select_hrs_from_time_hrs_with_sec_dropdown(String hrs) {
+	   subjectVisitForm2.selectHrsTime12WithSec(hrs);
+	}
+
+	@When("user select the {string} mins from time 12 hrs with sec dropdown")
+	public void user_select_the_mins_from_time_hrs_with_sec_dropdown(String mins) {
+		subjectVisitForm2.selectMinsTime12WithSec(mins);
+	}
+
+	@When("user select the {string} sec from time 12 hrs with sec dropdown")
+	public void user_select_the_sec_from_time_hrs_with_sec_dropdown(String sec) {
+		subjectVisitForm2.selectSecTime12WithSec(sec);
+	}
+
+	@When("user select the {string} from time 12 hrs with sec AMPM dropdown")
+	public void user_select_the_from_time_hrs_with_sec_am_pm_dropdown(String AMPM) {
+	   subjectVisitForm2.selectAMPMTime12WithSec(AMPM);
+	}
 
 }

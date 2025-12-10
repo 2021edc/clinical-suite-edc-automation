@@ -10,7 +10,7 @@ import org.junit.platform.suite.api.Suite;
 @IncludeEngines("cucumber")
 @SelectClasspathResource("Features")
 @ConfigurationParameter(key = "cucumber.glue", value = "steps_definations")
-@ConfigurationParameter(key="cucumber.filter.tags", value = "@smoke1")
+@ConfigurationParameter(key="cucumber.filter.tags", value = "@smoke11")
 @ConfigurationParameter(key = "cucumber.plugin", value = "pretty, html:target/cucumber-regression-test-report.html")
 
 

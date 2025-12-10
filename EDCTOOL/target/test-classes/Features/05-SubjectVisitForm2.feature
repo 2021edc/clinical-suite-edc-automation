@@ -45,6 +45,7 @@ Feature: Subject Visit Form-2
     And user click on Form 2 option
     Then verify that Submit for review button should be displayed
 
+  @regression
   Scenario: Verify that user is able to select hours and minutes
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
@@ -52,18 +53,21 @@ Feature: Subject Visit Form-2
     And user select "05" from hours dropdown
     And user select the "07" from minutes dropdown
 
+  @regression
   Scenario: Verify that for time 12 hours 12 should not be displayed
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
     Then verify that "12" should be shown in hours dropdown
 
+  @regression
   Scenario: Verify that for time 12 hours 60 mins should be displayed
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
     Then verify that "60" should be shown in mins dropdown
 
+  @regression
   Scenario: Verify that user is able to select time 24 hours and minutes
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
@@ -71,14 +75,26 @@ Feature: Subject Visit Form-2
     And user select "05" from time 24 hours dropdown
     And user select the "07" from time 24 minutes dropdown
 
+  @smoke
   Scenario: Verify that for time 12 hours 12 should not be displayed
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
     Then verify that "24" should not be shown in time 24 hours dropdown
 
+  @smoke
   Scenario: Verify that for time 12 hours 60 mins should be displayed
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
     Then verify that "60" should not be shown in time 24 mins dropdown
+
+  @smoke
+  Scenario: Verify that usershould be able to select the hrs, mins, sec and AM/PM
+    When user click on "MS1-813" to open the subject visit page
+    And user enter "Form 2" in search textbox
+    And user click on Form 2 option
+    And user select "11" hrs from time 12 hrs with sec dropdown
+    And user select the "13" mins from time 12 hrs with sec dropdown
+    And user select the "14" sec from time 12 hrs with sec dropdown
+    And user select the "AM" from time 12 hrs with sec AMPM dropdown
