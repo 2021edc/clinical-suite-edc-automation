@@ -51,7 +51,7 @@ public class AssertUtils extends SeleniumActions {
 	public void isElementEnabled(WebElement element, String attrtibuteName) {
 		Assert.assertEquals(getAttrtibuteValue(element, attrtibuteName), null);
 	}
-	
+
 	public void verifyMaxValueInDropdown(WebElement element, String text) {
 		Select select = new Select(element);
 
@@ -59,13 +59,27 @@ public class AssertUtils extends SeleniumActions {
 		boolean isPresent = false;
 
 		for (WebElement option : options) {
-		    if (option.getText().trim().equals(text)) {
-		        isPresent = true;
-		        break;
-		    }
+			if (option.getText().trim().equals(text)) {
+				isPresent = true;
+				break;
+			}
 		}
-
 		Assert.assertFalse(text + " is present in dropdown! But it should not be.", isPresent);
-		System.out.println(text+ " is NOT displayed in dropdown as expected.");
+	}
+
+	public void verifyMinValueInDropdown(WebElement element, String text) {
+		Select select = new Select(element);
+		List<WebElement> options = select.getOptions();
+
+		boolean isMinValuePresent = false;
+
+		for (WebElement option : options) {
+			if (option.getText().trim().equals(text)) {
+				isMinValuePresent = true;
+				break;
+			}
+		}
+		Assert.assertTrue("Minimum value '" + text + "' is NOT present in dropdown! Test Failed.", isMinValuePresent);
+
 	}
 }

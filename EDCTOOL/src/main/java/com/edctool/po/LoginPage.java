@@ -100,6 +100,7 @@ public class LoginPage extends SeleniumActions {
 	}
 	
 	public void selectStudy() {
+		staticWait(1);
 		clickOnElement(ddlStudy);
 	}
 	

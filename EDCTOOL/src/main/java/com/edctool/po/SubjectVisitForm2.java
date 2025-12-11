@@ -59,7 +59,7 @@ public class SubjectVisitForm2 extends SeleniumActions {
 	@FindBy(xpath="//select[@id='155820']")
 	private WebElement ddl24Mins;
 	
-	@FindBy(xpath="//div[@id='155821']//div[@class='row']//div[1]//div[1]//select[1]")
+	@FindBy(xpath="//div[@id='155821']//div[@class='row ps-2']//div[1]//div[1]//select[1]")
 	private WebElement ddlHrsForTimeWithSec;
 	
 	@FindBy(xpath="//div[@id='155821']//div[2]//div[1]//select[1]")
@@ -166,5 +166,35 @@ public class SubjectVisitForm2 extends SeleniumActions {
 	
 	public void selectAMPMTime12WithSec(String AMPM) {
 		selectValueFromDropdown(ddlAMPMForTimeWithSec, AMPM);
+	}
+	
+	public void verifyMaxHrsForTime12HrsWithSec(String hrs) {
+		staticWait(2);
+		assertUtils.verifyMaxValueInDropdown(ddlHrsForTimeWithSec, hrs);
+	}
+	
+	public void verifyMaxMinsForTime12HrsWithSec(String mins) {
+		staticWait(2);
+		assertUtils.verifyMaxValueInDropdown(ddlMinsForTimeWithSec, mins);
+	}
+	
+	public void verifyMaxSecForTime12HrsWithSec(String sec) {
+		staticWait(2);
+		assertUtils.verifyMaxValueInDropdown(ddlSecForTimeWithSec, sec);
+	}
+	
+	public void verifyMinHrsForTime12HrsWithSec(String hrs) {
+		staticWait(2);
+		assertUtils.verifyMinValueInDropdown(ddlHrsForTimeWithSec, hrs);
+	}
+	
+	public void verifyMinMinsForTime12HrsWithSec(String mins) {
+		staticWait(2);
+		assertUtils.verifyMinValueInDropdown(ddlMinsForTimeWithSec, mins);
+	}
+	
+	public void verifyMinSecForTime12HrsWithSec(String sec) {
+		staticWait(2);
+		assertUtils.verifyMinValueInDropdown(ddlSecForTimeWithSec, sec);
 	}
 }

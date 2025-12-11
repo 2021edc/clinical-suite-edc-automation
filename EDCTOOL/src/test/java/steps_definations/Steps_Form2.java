@@ -113,5 +113,35 @@ public class Steps_Form2 {
 	public void user_select_the_from_time_hrs_with_sec_am_pm_dropdown(String AMPM) {
 	   subjectVisitForm2.selectAMPMTime12WithSec(AMPM);
 	}
+	
+	@Then("verify that {string} should not be shown in time 12 hours with sec dropdown")
+	public void verify_that_should_not_be_shown_in_time_hours_with_sec_dropdown(String hrs) {
+	   subjectVisitForm2.verifyMaxHrsForTime12HrsWithSec(hrs);
+	}
+	
+	@Then("verify that {string} mins should not be shown in time 12 hours with sec dropdown")
+	public void verify_that_mins_should_not_be_shown_in_time_hours_with_sec_dropdown(String mins) {
+	   subjectVisitForm2.verifyMaxMinsForTime12HrsWithSec(mins);
+	}
+
+	@Then("verify that {string} sec should not be shown in time 12 hours with sec dropdown")
+	public void verify_that_sec_should_not_be_shown_in_time_hours_with_sec_dropdown(String sec) {
+	   subjectVisitForm2.verifyMaxSecForTime12HrsWithSec(sec);
+	}
+	
+	@Then("verify that {string} should be shown in time 12 hours with sec dropdown")
+	public void verify_that_should_be_shown_in_time_hours_with_sec_dropdown(String hrs) {
+	    subjectVisitForm2.verifyMinHrsForTime12HrsWithSec(hrs);
+	}
+
+	@Then("verify that {string} mins should be shown in time 12 hours with sec dropdown")
+	public void verify_that_mins_should_be_shown_in_time_hours_with_sec_dropdown(String mins) {
+	   subjectVisitForm2.verifyMinMinsForTime12HrsWithSec(mins);
+	}
+
+	@Then("verify that {string} sec should be shown in time 12 hours with sec dropdown")
+	public void verify_that_sec_should_be_shown_in_time_hours_with_sec_dropdown(String sec) {
+	  subjectVisitForm2.verifyMinSecForTime12HrsWithSec(sec);
+	}
 
 }
