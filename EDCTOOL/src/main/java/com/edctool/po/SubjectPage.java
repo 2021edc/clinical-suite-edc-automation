@@ -15,7 +15,7 @@ public class SubjectPage extends SeleniumActions {
 	
 	AssertUtils assertUtils= new AssertUtils();
 	
-	@FindBy(css = "button.btn-outline-primary")
+	@FindBy(css = "button.btn-outline-success")
 	private WebElement btnAddSubject;
 	
 	@FindBy(css = "h5")

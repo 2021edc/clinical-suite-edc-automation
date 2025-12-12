@@ -93,10 +93,10 @@ public class Steps_Form2 {
 	public void verify_that_should_not_be_shown_in_time_mins_dropdown(String mins) {
 		subjectVisitForm2.verifyTime24MaxMins(mins);
 	}
-	
+
 	@When("user select {string} hrs from time 12 hrs with sec dropdown")
 	public void user_select_hrs_from_time_hrs_with_sec_dropdown(String hrs) {
-	   subjectVisitForm2.selectHrsTime12WithSec(hrs);
+		subjectVisitForm2.selectHrsTime12WithSec(hrs);
 	}
 
 	@When("user select the {string} mins from time 12 hrs with sec dropdown")
@@ -111,37 +111,73 @@ public class Steps_Form2 {
 
 	@When("user select the {string} from time 12 hrs with sec AMPM dropdown")
 	public void user_select_the_from_time_hrs_with_sec_am_pm_dropdown(String AMPM) {
-	   subjectVisitForm2.selectAMPMTime12WithSec(AMPM);
+		subjectVisitForm2.selectAMPMTime12WithSec(AMPM);
 	}
-	
+
 	@Then("verify that {string} should not be shown in time 12 hours with sec dropdown")
 	public void verify_that_should_not_be_shown_in_time_hours_with_sec_dropdown(String hrs) {
-	   subjectVisitForm2.verifyMaxHrsForTime12HrsWithSec(hrs);
+		subjectVisitForm2.verifyMaxHrsForTime12HrsWithSec(hrs);
 	}
-	
+
 	@Then("verify that {string} mins should not be shown in time 12 hours with sec dropdown")
 	public void verify_that_mins_should_not_be_shown_in_time_hours_with_sec_dropdown(String mins) {
-	   subjectVisitForm2.verifyMaxMinsForTime12HrsWithSec(mins);
+		subjectVisitForm2.verifyMaxMinsForTime12HrsWithSec(mins);
 	}
 
 	@Then("verify that {string} sec should not be shown in time 12 hours with sec dropdown")
 	public void verify_that_sec_should_not_be_shown_in_time_hours_with_sec_dropdown(String sec) {
-	   subjectVisitForm2.verifyMaxSecForTime12HrsWithSec(sec);
+		subjectVisitForm2.verifyMaxSecForTime12HrsWithSec(sec);
 	}
-	
+
 	@Then("verify that {string} should be shown in time 12 hours with sec dropdown")
 	public void verify_that_should_be_shown_in_time_hours_with_sec_dropdown(String hrs) {
-	    subjectVisitForm2.verifyMinHrsForTime12HrsWithSec(hrs);
+		subjectVisitForm2.verifyMinHrsForTime12HrsWithSec(hrs);
 	}
 
 	@Then("verify that {string} mins should be shown in time 12 hours with sec dropdown")
 	public void verify_that_mins_should_be_shown_in_time_hours_with_sec_dropdown(String mins) {
-	   subjectVisitForm2.verifyMinMinsForTime12HrsWithSec(mins);
+		subjectVisitForm2.verifyMinMinsForTime12HrsWithSec(mins);
 	}
 
 	@Then("verify that {string} sec should be shown in time 12 hours with sec dropdown")
 	public void verify_that_sec_should_be_shown_in_time_hours_with_sec_dropdown(String sec) {
-	  subjectVisitForm2.verifyMinSecForTime12HrsWithSec(sec);
+		subjectVisitForm2.verifyMinSecForTime12HrsWithSec(sec);
+	}
+
+	@When("user click on today date from date and time textbox")
+	public void user_click_on_today_date_from_date_and_time_textbox() {
+		subjectVisitForm2.clickOnDateTime();
+	}
+
+	@When("user select the {string} hrs from the date time dropdown")
+	public void user_select_the_hrs_from_the_date_time_dropdown(String hrs) {
+		subjectVisitForm2.selectHrsDateTime(hrs);
+	}
+
+	@When("user select the {string} mins from the date time dropdown")
+	public void user_select_the_mins_from_the_date_time_dropdown(String mins) {
+		subjectVisitForm2.selectMinsDateTime(mins);
+	}
+
+	@Then("verify that user should not be able to select the next date")
+	public void verify_that_user_should_not_be_able_to_select_the_next_date() {
+		subjectVisitForm2.verifyNextDateDisableAndNotClickable();
+	}
+
+	@Then("verify that add button should be displayed")
+	public void verify_that_add_button_should_be_displayed() {
+		subjectVisitForm2.verifyAddButton();
+	}
+
+	@When("user click on Add button")
+	public void user_click_on_add_button() {
+		subjectVisitForm2.clickOnAddButton();
+	}
+
+	@Then("verify that form should be opened")
+	public void verify_that_form_should_be_opened() {
+		subjectVisitForm2.verifySaveVitalButton();
+		subjectVisitForm2.verifyVitalCloseButton();
 	}
 
 }

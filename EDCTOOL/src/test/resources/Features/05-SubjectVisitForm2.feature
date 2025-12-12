@@ -1,4 +1,6 @@
-     Background:
+Feature: Subject Visit Form2
+
+  Background:
     Given user open "chrome" browser and enter url "https://dev.clinicalsuite.nxtrial.com/"
     And user login with "Shreyansh" username and "Shreyans@123" as a password
     And user select study "TEST2025" and role "CRC" from dropdown and click on submit button
@@ -105,7 +107,7 @@
       | 07  | 12   | 45  | PM   |
       | 10  | 10   | 10  | PM   |
 
- @regression
+  @regression
   Scenario: Verify that for time 12 hrs with sec component 12 hrs should not be displayed
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
@@ -126,7 +128,7 @@
     And user click on Form 2 option
     Then verify that "60" sec should not be shown in time 12 hours with sec dropdown
 
-@regression
+  @regression
   Scenario: Verify that for time 12 hrs with sec component 00 hrs should be displayed
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
@@ -146,3 +148,41 @@
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
     Then verify that "00" sec should be shown in time 12 hours with sec dropdown
+
+  @smoke
+  Scenario: Verify that user is able to select the date and time both from datetime textbox
+    When user click on "MS1-813" to open the subject visit page
+    When user enter "Form 2" in search textbox
+    And user click on Form 2 option
+    And user click on today date from date and time textbox
+    And user select the "10" hrs from the date time dropdown
+    And user select the "48" mins from the date time dropdown
+
+  @smoke
+  Scenario: Verify that user is not able to select the tomorrow date from datetime textbox
+    When user click on "MS1-813" to open the subject visit page
+    When user enter "Form 2" in search textbox
+    And user click on Form 2 option
+    Then verify that user should not be able to select the next date
+
+  @smoke
+  Scenario: Verify that Add button should be displayed for Vitals
+    When user click on "MS1-813" to open the subject visit page
+    When user enter "Form 2" in search textbox
+    And user click on Form 2 option
+    Then verify that add button should be displayed
+
+  @smoke
+  Scenario: Verify that Add button should be displayed for Vitals
+    When user click on "MS1-813" to open the subject visit page
+    When user enter "Form 2" in search textbox
+    And user click on Form 2 option
+    Then verify that add button should be displayed
+
+  @smoke
+  Scenario: Verify that
+    When user click on "MS1-813" to open the subject visit page
+    When user enter "Form 2" in search textbox
+    And user click on Form 2 option
+    And user click on Add button
+    Then verify that form should be opened
