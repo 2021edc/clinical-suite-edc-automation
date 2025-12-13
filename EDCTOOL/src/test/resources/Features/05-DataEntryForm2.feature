@@ -8,6 +8,7 @@ Feature: Subject Visit Form2
 
   @smoke
   Scenario: Verify that form 2 page should be opened
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -15,6 +16,7 @@ Feature: Subject Visit Form2
 
   @smoke
   Scenario: Verify that user should be able to select the date from date picker
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -30,6 +32,7 @@ Feature: Subject Visit Form2
 
   @smoke
   Scenario: Verify that  user is able to select the date from the date dropdown
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -40,6 +43,7 @@ Feature: Subject Visit Form2
 
   @smoke
   Scenario: Verify that Submit for Review button should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-815"
     When user click on "MS1-815" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -47,6 +51,7 @@ Feature: Subject Visit Form2
 
   @regression
   Scenario: Verify that user is able to select hours and minutes
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -55,6 +60,7 @@ Feature: Subject Visit Form2
 
   @regression
   Scenario: Verify that for time 12 hours 12 should not be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -62,6 +68,7 @@ Feature: Subject Visit Form2
 
   @regression
   Scenario: Verify that for time 12 hours 60 mins should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -69,6 +76,7 @@ Feature: Subject Visit Form2
 
   @regression
   Scenario: Verify that user is able to select time 24 hours and minutes
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -77,6 +85,7 @@ Feature: Subject Visit Form2
 
   @smoke
   Scenario: Verify that for time 12 hours 12 should not be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -84,6 +93,7 @@ Feature: Subject Visit Form2
 
   @smoke
   Scenario: Verify that for time 12 hours 60 mins should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -91,6 +101,7 @@ Feature: Subject Visit Form2
 
   @smoke
   Scenario: Verify that user should be able to select the hrs, mins, sec and AM/PM
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     And user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -109,6 +120,7 @@ Feature: Subject Visit Form2
 
   @regression
   Scenario: Verify that for time 12 hrs with sec component 12 hrs should not be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -116,6 +128,7 @@ Feature: Subject Visit Form2
 
   @regression
   Scenario: Verify that for time 12 hrs with sec component 60 mins should not be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -123,6 +136,7 @@ Feature: Subject Visit Form2
 
   @regression
   Scenario: Verify that for time 12 hrs with sec component 60 sec should not be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -130,6 +144,7 @@ Feature: Subject Visit Form2
 
   @regression
   Scenario: Verify that for time 12 hrs with sec component 00 hrs should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -137,6 +152,7 @@ Feature: Subject Visit Form2
 
   @regression
   Scenario: Verify that for time 12 hrs with sec component 00 mins should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -144,6 +160,7 @@ Feature: Subject Visit Form2
 
   @regression
   Scenario: Verify that for time 12 hrs with sec component 00 sec should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -151,6 +168,7 @@ Feature: Subject Visit Form2
 
   @smoke
   Scenario: Verify that user is able to select the date and time both from datetime textbox
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
@@ -160,29 +178,10 @@ Feature: Subject Visit Form2
 
   @smoke
   Scenario: Verify that user is not able to select the tomorrow date from datetime textbox
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
     When user click on "MS1-813" to open the subject visit page
     When user enter "Form 2" in search textbox
     And user click on Form 2 option
     Then verify that user should not be able to select the next date
 
-  @smoke
-  Scenario: Verify that Add button should be displayed for Vitals
-    When user click on "MS1-813" to open the subject visit page
-    When user enter "Form 2" in search textbox
-    And user click on Form 2 option
-    Then verify that add button should be displayed
-
-  @smoke
-  Scenario: Verify that Add button should be displayed for Vitals
-    When user click on "MS1-813" to open the subject visit page
-    When user enter "Form 2" in search textbox
-    And user click on Form 2 option
-    Then verify that add button should be displayed
-
-  @smoke
-  Scenario: Verify that
-    When user click on "MS1-813" to open the subject visit page
-    When user enter "Form 2" in search textbox
-    And user click on Form 2 option
-    And user click on Add button
-    Then verify that form should be opened
+ 

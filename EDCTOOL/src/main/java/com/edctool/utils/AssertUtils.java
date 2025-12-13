@@ -47,6 +47,10 @@ public class AssertUtils extends SeleniumActions {
 	public void isElementDisabled(WebElement element, String attrtibuteName) {
 		Assert.assertEquals(getAttrtibuteValue(element, attrtibuteName), "true");
 	}
+	
+	public void isElementDisabledNullCheck(WebElement element) {
+		Assert.assertNull(element.getAttribute("disabled"));
+	}
 
 	public void isElementEnabled(WebElement element, String attrtibuteName) {
 		Assert.assertEquals(getAttrtibuteValue(element, attrtibuteName), null);

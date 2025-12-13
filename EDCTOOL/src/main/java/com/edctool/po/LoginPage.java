@@ -29,6 +29,10 @@ public class LoginPage extends SeleniumActions {
 
 	@FindBy(css = "div.text-danger")
 	private WebElement lblErrorMessage;
+	
+	@FindBy(css = "div[role='alert']")
+	private WebElement lblErrorMessageToaster;
+
 
 	@FindBy(css = "h5.loginH5")
 	private WebElement lblStudyAndRole;
@@ -69,6 +73,10 @@ public class LoginPage extends SeleniumActions {
 
 	public void verifyErrorMessage(String message) {
 		assertUtils.assertEquals(getVisibleText(lblErrorMessage), message);
+	}
+	
+	public void verifyErrorMessageToaster(String message) {
+		assertUtils.assertEquals(getVisibleText(lblErrorMessageToaster), message);
 	}
 
 	public void enterUsername(String username) {

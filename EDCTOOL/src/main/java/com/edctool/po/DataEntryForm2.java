@@ -10,9 +10,9 @@ import org.openqa.selenium.support.PageFactory;
 import com.edctool.utils.AssertUtils;
 import com.edctool.utils.SeleniumActions;
 
-public class SubjectVisitForm2 extends SeleniumActions {
+public class DataEntryForm2 extends SeleniumActions {
 
-	public SubjectVisitForm2() {
+	public DataEntryForm2() {
 		PageFactory.initElements(getDriver(), this);
 	}
 
@@ -80,15 +80,6 @@ public class SubjectVisitForm2 extends SeleniumActions {
 
 	@FindBy(xpath = "//select[@id='12minutes']")
 	private WebElement dateTimeMins;
-	
-	@FindBy(css="button[class='btn btn-outline-success w-100 w-md-auto']")
-	private WebElement btnAddVital;
-	
-	@FindBy(xpath ="//button[@class='btn btn-outline-success']//b[contains(text(),'Save')]")
-	private WebElement btnSaveVital;
-	
-	@FindBy(css="div[class='card-footer text-end'] button[class='btn btn-outline-danger']")
-	private WebElement btnCloseVital;
 
 	public void clickOnForm2Link() {
 		staticWait(2);
@@ -257,21 +248,5 @@ public class SubjectVisitForm2 extends SeleniumActions {
 		} catch (InvalidElementStateException e) {
 			
 		}
-	}
-	
-	public void verifyAddButton() {
-		assertUtils.isElementDisplayed(btnAddVital);
-	}
-	
-	public void clickOnAddButton() {
-		clickOnElement(btnAddVital);
-	}
-	
-	public void verifyVitalCloseButton() {
-		assertUtils.isElementDisplayed(btnCloseVital);
-	}
-	
-	public void verifySaveVitalButton() {
-		assertUtils.isElementDisplayed(btnCloseVital);
 	}
 }

@@ -9,15 +9,15 @@ import org.openqa.selenium.support.PageFactory;
 import com.edctool.utils.AssertUtils;
 import com.edctool.utils.SeleniumActions;
 
-public class SubjectVisit extends SeleniumActions {
+public class DataEntryForm1 extends SeleniumActions {
 
-	public SubjectVisit() {
+	public DataEntryForm1() {
 		PageFactory.initElements(getDriver(), this);
 	}
 
 	AssertUtils assertUtils = new AssertUtils();
 
-	@FindBy(css = "//b[normalize-space()='Reset']")
+	@FindBy(css = ".btn.btn-outline-secondary.mb-1")
 	private WebElement btnReset;
 
 	@FindBy(css = "span:nth-child(1) > button")
@@ -108,6 +108,7 @@ public class SubjectVisit extends SeleniumActions {
 	}
 
 	public void verifyResetButton() {
+		staticWait(3);
 		assertUtils.isElementDisplayed(btnReset);
 	}
 

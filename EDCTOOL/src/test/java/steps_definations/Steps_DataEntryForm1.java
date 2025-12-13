@@ -1,13 +1,13 @@
 package steps_definations;
 
-import com.edctool.po.SubjectVisit;
+import com.edctool.po.DataEntryForm1;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class Steps_SubjectVisit {
+public class Steps_DataEntryForm1 {
 
-	SubjectVisit subjectVisit = new SubjectVisit();
+	DataEntryForm1 subjectVisit = new DataEntryForm1();
 
 	@When("user click on {string} to open the subject visit page")
 	public void user_click_on_to_open_the_subject_visit_page(String subjectId) {

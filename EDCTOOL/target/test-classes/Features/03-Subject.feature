@@ -27,7 +27,7 @@ Feature: Subject
   Scenario: Verify that error message should be displayed if site is not selected
     When user click on Add Subject button
     And user click on save button
-    Then Verify that "Please select a site" error message should be displayed
+    Then Verify that "Please select a site" error message should be displayed in toaster
 
   @regression
   Scenario: Verify that error message should be displayed if subject is not entered
@@ -35,7 +35,7 @@ Feature: Subject
     And select the "ML_Site1" option from site dropdown
     And user remove the default from subject name textbox
     And user click on save button
-    Then Verify that "Please enter a subject ID" error message should be displayed
+    Then Verify that "Please enter a subject ID" error message should be displayed in toaster
 
   @regression
   Scenario: Verify that error message should be displayed if add the space input in subject name
@@ -43,7 +43,7 @@ Feature: Subject
     And select the "ML_Site1" option from site dropdown
     And user enter the "   " as a subject name
     And user click on save button
-    Then Verify that "Please enter a subject" error message should be displayed
+    Then Verify that "Please enter a subject" error message should be displayed in toaster
 
   @regression
   Scenario: Verify that Add subject details pop up should be closed after clicking on cancel button
@@ -57,9 +57,28 @@ Feature: Subject
     And select the "ML_Site1" option from site dropdown
     And user click on subject id textbox
     And user click on save button
-    Then Verify that "Subject added successfully" message should be displayed
+    Then Verify that "Subject added successfully" message should be displayed in toaster
 
   @smoke
   Scenario: Verify that Subject visit page should be opened
     When user click on "MS1-811" to open the subject visit page
     Then verify that subject visit page should be opened
+
+  @regression
+  Scenario: Verify that user is able apply filter for subject
+    When user click on subject filter
+    And user select "ML_Site1" from site filter dropdown
+    And user select the "MS1-813" subject id
+    And user click on apply button
+    Then verify that "MS1-813" subject id should be displayed in list
+
+  @regression
+  Scenario: Verify the components for subject apply filter
+    When user click on subject filter
+    And verify that site filter dropdown should be displayed
+    And verify that subject filter dropdown should be displayed
+    And verify that status filter dropdown should be displayed
+    And verify that local status filter dropdown should be displayed
+    And verify that apply button should be displayed
+    And verify that clear filter button should be displayed
+    And verify that close button should be displayed
