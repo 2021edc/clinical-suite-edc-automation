@@ -1,7 +1,7 @@
 Feature: Login
 
   Background:
-    Given user open "chrome" browser and enter url "https://dev.clinicalsuite.nxtrial.com/"
+    Given user open browser and enter url
 
   @smoke
   Scenario: Verify that login page should be opened

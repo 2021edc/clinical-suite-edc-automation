@@ -1,5 +1,6 @@
 package steps_definations;
 
+import com.edctool.po.AuditLogDataEntry;
 import com.edctool.po.LoginPage;
 import com.edctool.po.SubjectPage;
 import io.cucumber.java.en.Then;
@@ -9,6 +10,7 @@ public class Steps_Subjects {
 
 	SubjectPage subjectPage = new SubjectPage();
 	LoginPage loginPage = new LoginPage();
+	AuditLogDataEntry auditLogDataEntry= new AuditLogDataEntry();
 
 	@Then("verify that Add Subject button should be displayed")
 	public void verify_that_add_subject_button_should_be_displayed() {
@@ -126,5 +128,21 @@ public class Steps_Subjects {
 	public void verify_that_close_button_should_be_displayed() {
 		subjectPage.verifyCloseFilterButton();
 	}
+	
+	@Then("Verify that {string} message should be displayed in toaster")
+	public void verify_that_message_should_be_displayed_in_toaster(String message) {
+	   subjectPage.verifyToaster();
+	}
+
+	@When("user navigate to the audit logs page")
+	public void user_navigate_to_the_audit_logs_page() {
+	   auditLogDataEntry.OpenAuditLogPage();
+	}
+
+	@Then("verify that {string} added log should be displayed")
+	public void verify_that_added_log_should_be_displayed(String message) {
+	   auditLogDataEntry.verifyField(message);
+	}
+
 
 }

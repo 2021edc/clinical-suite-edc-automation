@@ -1,7 +1,7 @@
 Feature: Subject Visit
 
   Background:
-    Given user open "chrome" browser and enter url "https://dev.clinicalsuite.nxtrial.com/"
+    Given user open browser and enter url
     And user login with "Shreyansh" username and "Shreyans@123" as a password
     And user select study "TEST2025" and role "CRC" from dropdown and click on submit button
     When user click on "Subjects" option from left side menu

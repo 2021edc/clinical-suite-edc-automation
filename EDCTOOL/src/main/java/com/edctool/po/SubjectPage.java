@@ -33,7 +33,7 @@ public class SubjectPage extends SeleniumActions {
 	@FindBy(css = "[placeholder='Select Site']")
 	private WebElement selectSubject;
 
-	@FindBy(css = "[aria-label='Options list'] div[role='option']")
+	@FindBy(css = "[aria-label='Options list'] div[role='option'] span")
 	private List<WebElement> lstSiteOptions;
 	
 	@FindBy(css = "td.pointer")
@@ -68,6 +68,12 @@ public class SubjectPage extends SeleniumActions {
 	
 	@FindBy(css="span.dropdown-item-label")
 	private List<WebElement> lstFilterOptions;
+	
+	@FindBy(css="div[role='alert']")
+	private WebElement lblToaster;
+	
+	@FindBy(css="ng-select[id='siteId'] div[class='ng-select-container']")
+	private WebElement txtSite;
 
 	public void verifySubjectButton() {
 		assertUtils.isElementDisplayed(btnAddSubject);
@@ -92,6 +98,8 @@ public class SubjectPage extends SeleniumActions {
 
 	public void selectSiteOption(String site) {
 		staticWait(3);
+		clickOnElement(txtSite);
+		staticWait(1);
 		selectValueFromList(lstSiteOptions, site);
 	}
 	
@@ -181,5 +189,9 @@ public class SubjectPage extends SeleniumActions {
 	
 	public void clickOnCloseButton() {
 		clickOnElement(btnCloseFilter);
+	}
+	
+	public void verifyToaster() {
+		assertUtils.isElementDisplayed(lblToaster);
 	}
 }

@@ -83,10 +83,21 @@ public class Steps_DataEntryForm3 {
 	public void verify_that_form_should_be_closed() {
 		dataEntryForm3.formClosedAfterClickingOnCloseIcon();
 	}
-	
+
 	@Then("verify that plus icon should be disabled")
 	public void verify_that_plus_icon_should_be_disabled() {
-	    dataEntryForm3.verifyPlusIconDisable();
+		dataEntryForm3.verifyPlusIconDisable();
 	}
+
+	@When("user click on save button to save the form {int}")
+	public void user_click_on_save_button_to_save_the_form(Integer int1) {
+		dataEntryForm3.clickOnSaveButton();
+	}
+	
+	@Then("verify that {string} validation message should be appear while save the form")
+	public void verify_that_validation_message_should_be_appear_while_save_the_form(String message) {
+	  
+	}
+
 
 }

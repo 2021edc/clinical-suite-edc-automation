@@ -1,7 +1,7 @@
 Feature: Subject
 
   Background:
-    Given user open "chrome" browser and enter url "https://dev.clinicalsuite.nxtrial.com/"
+    Given user open browser and enter url
     And user login with "Shreyansh" username and "Shreyans@123" as a password
     And user select study "TEST2025" and role "CRC" from dropdown and click on submit button
     When user click on "Subjects" option from left side menu
@@ -52,14 +52,6 @@ Feature: Subject
     Then verify that pop up should be closed
 
   @smoke
-  Scenario: Verify that user should be able to add the subject
-    When user click on Add Subject button
-    And select the "ML_Site1" option from site dropdown
-    And user click on subject id textbox
-    And user click on save button
-    Then Verify that "Subject added successfully" message should be displayed in toaster
-
-  @smoke
   Scenario: Verify that Subject visit page should be opened
     When user click on "MS1-811" to open the subject visit page
     Then verify that subject visit page should be opened
@@ -82,3 +74,13 @@ Feature: Subject
     And verify that apply button should be displayed
     And verify that clear filter button should be displayed
     And verify that close button should be displayed
+
+  @smoke96
+  Scenario: Verify that user should be able to add the subject
+    When user click on Add Subject button
+    And select the "ML_Site1" option from site dropdown
+    And user click on subject id textbox
+    And user click on save button
+    Then Verify that "Subject added successfully" message should be displayed in toaster
+    When user navigate to the audit logs page
+    Then verify that "subject" added log should be displayed

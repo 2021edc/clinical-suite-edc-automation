@@ -1,7 +1,7 @@
 Feature: Subject VIisit Form 3
 
   Background:
-    Given user open "chrome" browser and enter url "https://dev.clinicalsuite.nxtrial.com/"
+    Given user open browser and enter url
     And user login with "Shreyansh" username and "Shreyans@123" as a password
     And user select study "TEST2025" and role "CRC" from dropdown and click on submit button
     When user click on "Subjects" option from left side menu
@@ -103,3 +103,21 @@ Feature: Subject VIisit Form 3
     And user click on form option
     And user click on plus icon
     Then verify that plus icon should be disabled
+
+  @regression
+  Scenario: Verify that query popup should be appear with validation
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
+    And user click on "MS1-813" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on plus icon
+    And user enter "<sr no>" in sr no textbox
+    And user click on save button to save the form 3
+    Then verify that "maximum value" validation message should be appear while save the form
+
+    Examples:
+      | sr no |
+      | 32001 |
+      | 80000 |
+      
+      
