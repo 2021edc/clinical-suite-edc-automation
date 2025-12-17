@@ -93,11 +93,35 @@ public class Steps_DataEntryForm3 {
 	public void user_click_on_save_button_to_save_the_form(Integer int1) {
 		dataEntryForm3.clickOnSaveButton();
 	}
-	
+
 	@Then("verify that {string} validation message should be appear while save the form")
 	public void verify_that_validation_message_should_be_appear_while_save_the_form(String message) {
-	  
+		dataEntryForm3.verifyErrorMessage(message);
 	}
 
+	@Then("verify that {string} added log should be displayed with today date")
+	public void verify_that_added_log_should_be_displayed_with_today_date(String log) {
+		dataEntryForm3.validateTestTableForToday(log);
+	}
+
+	@When("user click on save button to save the table")
+	public void user_click_on_save_button_to_save_the_table() {
+		dataEntryForm3.clickOnSaveIcon();
+	}
+
+	@When("user click on delete")
+	public void user_click_on_delete() {
+		dataEntryForm3.clickOnCloseIcon();
+	}
+
+	@Then("verify that + icon should be enabled")
+	public void verify_that_icon_should_be_enabled() {
+		dataEntryForm3.plusIconEnabled();
+	}
+
+	@Then("verify that Add button should be disabled")
+	public void verify_that_add_button_should_be_disabled() {
+		
+	}
 
 }

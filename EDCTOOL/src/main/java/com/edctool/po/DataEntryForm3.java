@@ -1,7 +1,11 @@
 package com.edctool.po;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -50,6 +54,15 @@ public class DataEntryForm3 extends SeleniumActions {
 
 	@FindBy(css = "th[class='table-column'] span[title='Heart Rate']")
 	private WebElement lblHeartRate;
+
+	@FindBy(xpath = "//*[@id='myTable']/tbody[1]//td[5]")
+	private WebElement lblErrorMessage;
+	
+	@FindBy(css="span[class='saveIcon']")
+	private WebElement iconSave;
+	
+	@FindBy(css="//*[text()='Add']")
+	private WebElement btnAdd;
 
 	AssertUtils assertUtils = new AssertUtils();
 
@@ -116,8 +129,60 @@ public class DataEntryForm3 extends SeleniumActions {
 	public void formClosedAfterClickingOnCloseIcon() {
 		assertUtils.isElementNotDisplayed(lstTreatmentCheckbox);
 	}
-	
+
 	public void verifyPlusIconDisable() {
 		assertUtils.isElementDisabledNullCheck(btnPlus);
+	}
+
+	public void verifyErrorMessage(String message) {
+		assertUtils.assertEquals(getVisibleText(lblErrorMessage), message);
+	}
+
+	public void validateTestTableForToday(String log) {
+		
+		String todayDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MMM/yyyy"));
+		System.out.println(todayDate);
+		
+		staticWait(3);
+		
+		List<WebElement> rows = getDriver().findElements(By.xpath("//table//tbody/tr"));
+
+		boolean recordFound = false;
+
+		for (WebElement row : rows) {
+			String fieldValue = row.findElement(By.xpath("./td[5]") // Field column index
+			).getText().trim();
+			
+			System.out.println(fieldValue);
+
+			String dateTimeValue = row.findElement(By.xpath("./td[10]") // Date & Time column index
+			).getText().trim();
+			
+			System.out.println(dateTimeValue);
+
+			if (fieldValue.equalsIgnoreCase(log) && dateTimeValue.startsWith(todayDate)) {
+
+				recordFound = true;
+				break;
+			}
+		}
+
+		Assert.assertTrue("TEST table entry for today's date is NOT present in the table", recordFound);
+	}
+	
+	public void clickOnSaveIcon() {
+		clickOnElement(iconSave);
+	}
+	
+	public void clickOnDeleteIcon() {
+		clickOnElement(closeIcon);
+	}
+	
+	public void plusIconEnabled() {
+		assertUtils.isElementEnabled(btnPlus);
+	}
+	
+	public void addButtonDIsable() {
+		assertUtils.isElementDisabledNullCheck(btnAdd);
 	}
 }

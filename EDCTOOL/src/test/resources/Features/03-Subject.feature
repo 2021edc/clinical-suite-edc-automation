@@ -75,7 +75,7 @@ Feature: Subject
     And verify that clear filter button should be displayed
     And verify that close button should be displayed
 
-  @smoke96
+  @smoke
   Scenario: Verify that user should be able to add the subject
     When user click on Add Subject button
     And select the "ML_Site1" option from site dropdown

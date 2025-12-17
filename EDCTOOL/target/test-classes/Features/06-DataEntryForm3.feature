@@ -119,5 +119,99 @@ Feature: Subject VIisit Form 3
       | sr no |
       | 32001 |
       | 80000 |
-      
-      
+
+  @regression
+  Scenario: Verify that minimum value validation message should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
+    And user click on "MS1-813" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on plus icon
+    And user enter "<sr no>" in sr no textbox
+    And user click on save button to save the form 3
+    Then verify that "minimum value" validation message should be appear while save the form
+
+    Examples:
+      | sr no |
+      | -11   |
+      | -2021 |
+
+  @smoke
+  Scenario: Verify that audit log should be displayed after saving the form
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
+    And user click on "MS1-813" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on plus icon
+    And user enter "<sr no>" in sr no textbox
+    And user enter "<bp>" in bp textbox
+    And user select "<heart rate>" checkbox from heart rate
+    And user select "<treatment>" from treatment checkbox
+    And user select "<respiratory rate>" from Respiratory Rate dropdown
+    And user click on save button to save the table
+    And user navigate to the audit logs page
+    Then verify that "TEST table" added log should be displayed with today date
+
+    Examples:
+      | sr no | bp | heart rate | treatment | respiratory rate |
+      | 1     | 12 | Normal     | Medicine  | Yes              |
+
+  @regression
+  Scenario: Verify the minimum BP value
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
+    And user click on "MS1-813" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on plus icon
+    And user enter "<bp>" in bp textbox
+    And user click on save button to save the form 3
+    Then verify that "minimum value" validation message should be appear while save the form
+
+    Examples:
+      | bp  |
+      | -1  |
+      | -67 |
+
+  @regression
+  Scenario: Verify that maximum bp field validation should be appear
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
+    And user click on "MS1-813" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on plus icon
+    And user enter "<bp>" in sr no textbox
+    And user click on save button to save the form 3
+    Then verify that "maximum value" validation message should be appear while save the form
+
+    Examples:
+      | sr no |
+      | 33333 |
+      | 76678 |
+
+  @smoke
+  Scenario: Verify that user should be able to delete the form
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
+    And user click on "MS1-813" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on plus icon
+    And user enter "<sr no>" in sr no textbox
+    And user enter "<bp>" in bp textbox
+    And user select "<heart rate>" checkbox from heart rate
+    And user select "<treatment>" from treatment checkbox
+    And user select "<respiratory rate>" from Respiratory Rate dropdown
+    And user click on delete
+    Then verify that + icon should be enabled
+
+    Examples:
+      | sr no | bp | heart rate | treatment | respiratory rate |
+      | 1     | 12 | Normal     | Medicine  | Yes              |
+
+  @regression
+  Scenario: Verify that Add button should be disabled when table form is opened
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
+    And user click on "MS1-813" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on plus icon
+    Then verify that Add button should be disabled

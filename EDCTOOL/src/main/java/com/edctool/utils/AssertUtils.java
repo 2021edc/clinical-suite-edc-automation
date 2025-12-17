@@ -55,6 +55,10 @@ public class AssertUtils extends SeleniumActions {
 	public void isElementEnabled(WebElement element, String attrtibuteName) {
 		Assert.assertEquals(getAttrtibuteValue(element, attrtibuteName), null);
 	}
+	
+	public void isElementEnabled(WebElement element) {
+		Assert.assertTrue(element.isEnabled());;
+	}
 
 	public void verifyMaxValueInDropdown(WebElement element, String text) {
 		Select select = new Select(element);
