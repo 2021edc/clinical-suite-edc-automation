@@ -2,6 +2,7 @@ package com.edctool.framework;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
@@ -19,6 +20,10 @@ public class WebBase {
 			driver = new EdgeDriver();
 		} else if(browserName.toLowerCase().contains("safari")) {
 			driver = new SafariDriver();
+		} else if(browserName.toLowerCase().contains("headless")) {
+			ChromeOptions options= new ChromeOptions();
+			options.addArguments("--headless");
+			driver = new ChromeDriver(options);
 		}
 		else {
 			System.out.println("Please enter the valid browser name.");
