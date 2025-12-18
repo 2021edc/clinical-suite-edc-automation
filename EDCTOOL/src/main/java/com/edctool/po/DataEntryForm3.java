@@ -57,12 +57,24 @@ public class DataEntryForm3 extends SeleniumActions {
 
 	@FindBy(xpath = "//*[@id='myTable']/tbody[1]//td[5]")
 	private WebElement lblErrorMessage;
-	
-	@FindBy(css="span[class='saveIcon']")
+
+	@FindBy(css = "span[class='saveIcon']")
 	private WebElement iconSave;
-	
-	@FindBy(css="//*[text()='Add']")
+
+	@FindBy(xpath = "//*[text()='Add']")
 	private WebElement btnAdd;
+
+	@FindBy(css = "input[id='Sr. No']")
+	private WebElement txtMultiRawSrNo;
+	
+	@FindBy(css = "input[id='Sr. No']")
+	private List<WebElement> lstMultiRawSrNo;
+
+	@FindBy(css = "div[class='card-footer text-end'] button[class='btn btn-outline-success']")
+	private WebElement btnMultiRawSave;
+
+	@FindBy(css = "div[class='card-footer text-end'] button[class='btn btn-outline-danger']")
+	private WebElement btnMultiRawClose;
 
 	AssertUtils assertUtils = new AssertUtils();
 
@@ -139,12 +151,12 @@ public class DataEntryForm3 extends SeleniumActions {
 	}
 
 	public void validateTestTableForToday(String log) {
-		
+
 		String todayDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MMM/yyyy"));
 		System.out.println(todayDate);
-		
+
 		staticWait(3);
-		
+
 		List<WebElement> rows = getDriver().findElements(By.xpath("//table//tbody/tr"));
 
 		boolean recordFound = false;
@@ -152,12 +164,12 @@ public class DataEntryForm3 extends SeleniumActions {
 		for (WebElement row : rows) {
 			String fieldValue = row.findElement(By.xpath("./td[5]") // Field column index
 			).getText().trim();
-			
+
 			System.out.println(fieldValue);
 
 			String dateTimeValue = row.findElement(By.xpath("./td[10]") // Date & Time column index
 			).getText().trim();
-			
+
 			System.out.println(dateTimeValue);
 
 			if (fieldValue.equalsIgnoreCase(log) && dateTimeValue.startsWith(todayDate)) {
@@ -169,20 +181,45 @@ public class DataEntryForm3 extends SeleniumActions {
 
 		Assert.assertTrue("TEST table entry for today's date is NOT present in the table", recordFound);
 	}
-	
+
 	public void clickOnSaveIcon() {
 		clickOnElement(iconSave);
 	}
-	
+
 	public void clickOnDeleteIcon() {
 		clickOnElement(closeIcon);
 	}
-	
+
 	public void plusIconEnabled() {
 		assertUtils.isElementEnabled(btnPlus);
 	}
-	
-	public void addButtonDIsable() {
+
+	public void addButtonDisable() {
 		assertUtils.isElementDisabledNullCheck(btnAdd);
+	}
+
+	public void addButtonEnable() {
+		staticWait(2);
+		assertUtils.isElementEnabled(btnAdd);
+	}
+
+	public void clickOnAddButton() {
+		clickOnElement(btnAdd);
+	}
+
+	public void enterSrNoInMultiRaw(String srNo) {
+		enterTextIntoTextbox(txtMultiRawSrNo, srNo);
+	}
+
+	public void clickOnSaveForMultiRaw() {
+		clickOnElement(btnMultiRawSave);
+	}
+
+	public void clickOnMultiRawClose() {
+		clickOnElement(btnMultiRawClose);
+	}
+	
+	public void verifyCloseForm() {
+		assertUtils.isElementNotDisplayed(lstMultiRawSrNo);
 	}
 }

@@ -1,4 +1,4 @@
-Feature: Subject VIisit Form 3
+Feature: Subject Visit Form 3
 
   Background:
     Given user open browser and enter url
@@ -215,3 +215,51 @@ Feature: Subject VIisit Form 3
     And user click on form option
     And user click on plus icon
     Then verify that Add button should be disabled
+
+  @smoke
+  Scenario: Verify that Add button should be enabled
+    When user apply filter with site "ML_Site1" and subject "MS1-833"
+    And user click on "MS1-833" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    Then verify that add button should be enabled
+
+  @regression
+  Scenario: Verify that user should be able to enter the sr no in table view form
+    When user apply filter with site "ML_Site1" and subject "MS1-833"
+    And user click on "MS1-833" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on add button
+    And user enter the "<sr no>" in sr no textbox
+
+    Examples:
+      | sr no |
+      | 2313  |
+      | 78990 |
+
+  @regression
+  Scenario: Verify that error message appear while enter the long number
+    When user apply filter with site "ML_Site1" and subject "MS1-833"
+    And user click on "MS1-833" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on add button
+    And user enter the "<sr no>" in sr no textbox
+    And user click on save button to save the multi raw form 3
+    Then verify that "Maximum Value" validation message should be appear while save the form
+
+    Examples:
+      | sr no                              |
+      | 231379234723747234798243798297842  |
+      | 7899008908098080890890890890980808 |
+
+  @regression
+  Scenario: Verify that after clicking on close button form should be closed
+    When user apply filter with site "ML_Site1" and subject "MS1-833"
+    And user click on "MS1-833" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on add button
+    And user click on multi raw close button
+    Then verify that multi raw form should be closed

@@ -121,7 +121,37 @@ public class Steps_DataEntryForm3 {
 
 	@Then("verify that Add button should be disabled")
 	public void verify_that_add_button_should_be_disabled() {
-		
+		dataEntryForm3.addButtonDisable();
+	}
+
+	@Then("verify that add button should be enabled")
+	public void verify_that_add_button_should_be_enabled() {
+		dataEntryForm3.addButtonEnable();
+	}
+
+	@When("user click on add button")
+	public void user_click_on_add_button() {
+		dataEntryForm3.clickOnAddButton();
+	}
+
+	@When("user enter the {string} in sr no textbox")
+	public void user_enter_the_in_sr_no_textbox(String srNo) {
+		dataEntryForm3.enterSrNoInMultiRaw(srNo);
+	}
+
+	@When("user click on save button to save the multi raw form {int}")
+	public void user_click_on_save_button_to_save_the_multi_raw_form(Integer int1) {
+		dataEntryForm3.clickOnSaveForMultiRaw();
+	}
+	
+	@When("user click on multi raw close button")
+	public void user_click_on_multi_raw_close_button() {
+	  dataEntryForm3.clickOnMultiRawClose();
+	}
+
+	@Then("verify that multi raw form should be closed")
+	public void verify_that_multi_raw_form_should_be_closed() {
+	   dataEntryForm3.verifyCloseForm();
 	}
 
 }
