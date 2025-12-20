@@ -1,7 +1,10 @@
 package com.edctool.utils;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
@@ -88,6 +91,32 @@ public class AssertUtils extends SeleniumActions {
 			}
 		}
 		Assert.assertTrue("Minimum value '" + text + "' is NOT present in dropdown! Test Failed.", isMinValuePresent);
-
 	}
+	
+	public void validateTableColumnValueForToday(int columnIndex, int dateColumnIndex, String expectedValue) {
+
+		String todayDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MMM/yyyy"));
+
+		staticWait(5);
+
+		List<WebElement> rows = getDriver().findElements(By.xpath("//table//tbody/tr"));
+		boolean recordFound = false;
+
+		for (WebElement row : rows) {
+
+			String actualColumnValue = row.findElement(By.xpath("./td[" + columnIndex + "]")).getText().trim();
+
+			String dateTimeValue = row.findElement(By.xpath("./td[" + dateColumnIndex + "]")) // Date column
+					.getText().trim();
+
+			if (actualColumnValue.contains(expectedValue) && dateTimeValue.startsWith(todayDate)) {
+				recordFound = true;
+				break;
+			}
+		}
+
+		Assert.assertTrue("Expected value '" + expectedValue + "' not found for today in column index: " + columnIndex,
+				recordFound);
+	}
+
 }

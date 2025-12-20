@@ -22,5 +22,10 @@ public class Steps_Home {
 	public void user_click_on_opion_from_left_side_menu(String option) {
 	    homePage.clickOnMenuItem(option);
 	}
+	
+	@When("user click on arrow to make the left menu sticky")
+	public void user_click_on_arrow_to_make_the_left_menu_sticky() {
+	   homePage.clickOnCollapseMenu();
+	}
 
 }

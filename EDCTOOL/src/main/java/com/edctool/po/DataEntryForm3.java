@@ -1,15 +1,9 @@
 package com.edctool.po;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-
-import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.edctool.utils.AssertUtils;
 import com.edctool.utils.SeleniumActions;
 
@@ -49,9 +43,6 @@ public class DataEntryForm3 extends SeleniumActions {
 	@FindBy(css = "button[title='Save']")
 	private WebElement btnSave;
 
-	@FindBy(xpath = "//button[@class='control-buttons'][2]")
-	private WebElement closeIcon;
-
 	@FindBy(css = "th[class='table-column'] span[title='Heart Rate']")
 	private WebElement lblHeartRate;
 
@@ -66,7 +57,7 @@ public class DataEntryForm3 extends SeleniumActions {
 
 	@FindBy(css = "input[id='Sr. No']")
 	private WebElement txtMultiRawSrNo;
-	
+
 	@FindBy(css = "input[id='Sr. No']")
 	private List<WebElement> lstMultiRawSrNo;
 
@@ -75,6 +66,24 @@ public class DataEntryForm3 extends SeleniumActions {
 
 	@FindBy(css = "div[class='card-footer text-end'] button[class='btn btn-outline-danger']")
 	private WebElement btnMultiRawClose;
+
+	@FindBy(css = "[title='Delete']")
+	private WebElement btnDelete;
+
+	@FindBy(css = "#reason")
+	private WebElement txtReason;
+	
+	@FindBy(css="[role='combobox']")
+	private WebElement ddlRowId;
+	
+	@FindBy(css="[title='1']")
+	private WebElement lblRowIdFilter;
+	
+	@FindBy  (xpath="//*[text()='Search']")
+	private WebElement btnSearch;
+	
+	@FindBy(xpath="//*[text()='Clear Filter']")
+	private WebElement btnClearFilters;
 
 	AssertUtils assertUtils = new AssertUtils();
 
@@ -118,10 +127,6 @@ public class DataEntryForm3 extends SeleniumActions {
 		clickOnElement(btnSave);
 	}
 
-	public void clickOnCloseIcon() {
-		clickOnElement(closeIcon);
-	}
-
 	public void verifyMultiRowTable() {
 		assertUtils.isElementDisplayed(txtSrNo);
 	}
@@ -150,44 +155,16 @@ public class DataEntryForm3 extends SeleniumActions {
 		assertUtils.assertEquals(getVisibleText(lblErrorMessage), message);
 	}
 
-	public void validateTestTableForToday(String log) {
+	public void verifyField(String log) {
+		assertUtils.validateTableColumnValueForToday(5,10, log);
+	}
 
-		String todayDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MMM/yyyy"));
-		System.out.println(todayDate);
-
-		staticWait(3);
-
-		List<WebElement> rows = getDriver().findElements(By.xpath("//table//tbody/tr"));
-
-		boolean recordFound = false;
-
-		for (WebElement row : rows) {
-			String fieldValue = row.findElement(By.xpath("./td[5]") // Field column index
-			).getText().trim();
-
-			System.out.println(fieldValue);
-
-			String dateTimeValue = row.findElement(By.xpath("./td[10]") // Date & Time column index
-			).getText().trim();
-
-			System.out.println(dateTimeValue);
-
-			if (fieldValue.equalsIgnoreCase(log) && dateTimeValue.startsWith(todayDate)) {
-
-				recordFound = true;
-				break;
-			}
-		}
-
-		Assert.assertTrue("TEST table entry for today's date is NOT present in the table", recordFound);
+	public void verifyMessage(String message) {
+		assertUtils.validateTableColumnValueForToday(8,10, message);
 	}
 
 	public void clickOnSaveIcon() {
 		clickOnElement(iconSave);
-	}
-
-	public void clickOnDeleteIcon() {
-		clickOnElement(closeIcon);
 	}
 
 	public void plusIconEnabled() {
@@ -218,8 +195,33 @@ public class DataEntryForm3 extends SeleniumActions {
 	public void clickOnMultiRawClose() {
 		clickOnElement(btnMultiRawClose);
 	}
-	
+
 	public void verifyCloseForm() {
 		assertUtils.isElementNotDisplayed(lstMultiRawSrNo);
+	}
+
+	public void clickOnDelete() {
+		clickOnElement(btnDelete);
+	}
+
+	public void enterReason(String reason) {
+		enterTextIntoTextbox(txtReason, reason);
+	}
+	
+	public void clickOnRowId() {
+		clickOnElement(ddlRowId);
+		clickOnElement(lblRowIdFilter);
+	}
+	
+	public void verifyRowId() {
+		assertUtils.isElementDisplayed(ddlRowId);
+	}
+	
+	public void verifySearchButton() {
+		assertUtils.isElementDisplayed(btnSearch);
+	}
+	
+	public void verifyClearFitlerButton() {
+		assertUtils.isElementDisplayed(btnClearFilters);
 	}
 }

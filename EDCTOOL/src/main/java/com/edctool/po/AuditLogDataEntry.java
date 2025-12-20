@@ -17,16 +17,27 @@ public class AuditLogDataEntry extends SeleniumActions {
 	@FindBy(css="a[class='list-group-item cursor-pointer'] b")
 	private WebElement lnkAuditLog;
 	
-	@FindBy(css="a[class='list-group-item'] div[class='label mx-3'] b")
+	@FindBy(xpath="//*[@class='dataEntryAuditIcon menuIcon']")
 	private WebElement lnkDataEntry;
 	
 	@FindBy(css="tbody tr:nth-child(1) td:nth-child(5)")
 	private WebElement lblField;
 	
+	@FindBy(css="button[aria-label='Close']")
+	private WebElement btnCloseToaster;
+	
+	@FindBy(css=".text-end .btn-outline-success")
+	private WebElement btnYes;
+	
+	public void clickOnSuccessButton() {
+		clickOnElementIfVisible(btnYes);
+	}
+	
 	public void OpenAuditLogPage() {
-		mouseHover(lnkAuditLog);
+		staticWait(3);
 		clickOnElement(lnkAuditLog);
 		clickOnElement(lnkDataEntry);
+		clickOnSuccessButton();
 	}
 	
 	public void verifyField(String expectedValue) {

@@ -29,6 +29,9 @@ public class HomePage extends SeleniumActions{
 	@FindBy(css="p.heading")
 	private WebElement lblHeader;
 	
+	@FindBy(css="[title='Collapse Menu']")
+	private WebElement btnCollapseMenu;
+	
 	public void verifyNameInHeader() {
 		assertUtils.isElementDisplayed(lblUserHeader);
 	}
@@ -46,6 +49,10 @@ public class HomePage extends SeleniumActions{
 	public void verifyHeader(String header) {
 		staticWait(2);
 		assertUtils.assertEquals(getVisibleText(lblHeader), header);
+	}
+	
+	public void clickOnCollapseMenu() {
+		clickOnElement(btnCollapseMenu);
 	}
 
 }

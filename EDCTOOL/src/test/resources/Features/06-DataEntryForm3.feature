@@ -6,7 +6,7 @@ Feature: Subject Visit Form 3
     And user select study "TEST2025" and role "CRC" from dropdown and click on submit button
     When user click on "Subjects" option from left side menu
 
-  @smoke
+ @smoke
   Scenario: Verify that user should be able to open the form 3
     When user apply filter with site "ML_Site1" and subject "MS1-813"
     And user click on "MS1-813" to open the subject visit page
@@ -137,9 +137,10 @@ Feature: Subject Visit Form 3
       | -2021 |
 
   @smoke
-  Scenario: Verify that audit log should be displayed after saving the form
-    When user apply filter with site "ML_Site1" and subject "MS1-813"
-    And user click on "MS1-813" to open the subject visit page
+  Scenario: Verify that insert audit log should be displayed after saving the form
+    When user click on arrow to make the left menu sticky
+    And user apply filter with site "ML_Site1" and subject "MS1-831"
+    And user click on "MS1-831" to open the subject visit page
     And user enter "Form 3" in search textbox
     And user click on form option
     And user click on plus icon
@@ -151,10 +152,25 @@ Feature: Subject Visit Form 3
     And user click on save button to save the table
     And user navigate to the audit logs page
     Then verify that "TEST table" added log should be displayed with today date
+    And verify that Respiratory Rate should be displayed into the data entry point
 
     Examples:
       | sr no | bp | heart rate | treatment | respiratory rate |
       | 1     | 12 | Normal     | Medicine  | Yes              |
+
+  @smoke
+  Scenario: Verify that delete audit log should be displayed after deleting the form
+    When user click on arrow to make the left menu sticky
+    And user apply filter with site "ML_Site1" and subject "MS1-831"
+    And user click on "MS1-831" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on delete button to delete the form
+    And user enter the "delete reason" in reason textbox
+    And user click on ok button
+    And user navigate to the audit logs page
+    Then verify that "Data Entry deleted" deleted log should be displayed with today date
+    And verify that Respiratory Rate should be deleted displayed into the data entry point
 
   @regression
   Scenario: Verify the minimum BP value
@@ -263,3 +279,27 @@ Feature: Subject Visit Form 3
     And user click on add button
     And user click on multi raw close button
     Then verify that multi raw form should be closed
+
+  @regression
+  Scenario: Verify that row id filter dropdown should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-832"
+    And user click on "MS1-832" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    Then verify that row id dropdown filter should be displayed
+
+  @regression
+  Scenario: Verify that search button should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-832"
+    And user click on "MS1-832" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    Then verify that search button should be displayed
+
+  @regression
+  Scenario: Verify that clear filters button should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-832"
+    And user click on "MS1-832" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    Then verify that clear filter for form button should be displayed

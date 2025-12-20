@@ -1,13 +1,16 @@
 package steps_definations;
 
+import com.edctool.po.AuditLogDataEntry;
+import com.edctool.po.AuditLogDataPoint;
 import com.edctool.po.DataEntryForm3;
-
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class Steps_DataEntryForm3 {
 
 	DataEntryForm3 dataEntryForm3 = new DataEntryForm3();
+	AuditLogDataPoint auditLogDataPoint = new AuditLogDataPoint();
+	AuditLogDataEntry auditLogDataEntry = new AuditLogDataEntry();
 
 	@When("user click on form option")
 	public void user_click_on_form_option() {
@@ -76,7 +79,7 @@ public class Steps_DataEntryForm3 {
 
 	@When("user click on close icon")
 	public void user_click_on_close_icon() {
-		dataEntryForm3.clickOnCloseIcon();
+		dataEntryForm3.clickOnDelete();
 	}
 
 	@Then("verify that form should be closed")
@@ -101,7 +104,7 @@ public class Steps_DataEntryForm3 {
 
 	@Then("verify that {string} added log should be displayed with today date")
 	public void verify_that_added_log_should_be_displayed_with_today_date(String log) {
-		dataEntryForm3.validateTestTableForToday(log);
+		dataEntryForm3.verifyField(log);
 	}
 
 	@When("user click on save button to save the table")
@@ -111,7 +114,7 @@ public class Steps_DataEntryForm3 {
 
 	@When("user click on delete")
 	public void user_click_on_delete() {
-		dataEntryForm3.clickOnCloseIcon();
+		dataEntryForm3.clickOnDelete();
 	}
 
 	@Then("verify that + icon should be enabled")
@@ -143,15 +146,62 @@ public class Steps_DataEntryForm3 {
 	public void user_click_on_save_button_to_save_the_multi_raw_form(Integer int1) {
 		dataEntryForm3.clickOnSaveForMultiRaw();
 	}
-	
+
 	@When("user click on multi raw close button")
 	public void user_click_on_multi_raw_close_button() {
-	  dataEntryForm3.clickOnMultiRawClose();
+		dataEntryForm3.clickOnMultiRawClose();
 	}
 
 	@Then("verify that multi raw form should be closed")
 	public void verify_that_multi_raw_form_should_be_closed() {
-	   dataEntryForm3.verifyCloseForm();
+		dataEntryForm3.verifyCloseForm();
+	}
+
+	@Then("verify that Respiratory Rate should be displayed into the data entry point")
+	public void verify_that_treatment_should_be_displayed_into_the_data_entry_point() {
+		auditLogDataPoint.clickOnDataPoint();
+		auditLogDataPoint.verifyRespiratoryRateInDataPoint();
+	}
+
+	@When("user click on delete button to delete the form")
+	public void user_click_on_delete_button_to_delete_the_form() {
+		dataEntryForm3.clickOnDelete();
+	}
+
+	@When("user enter the {string} in reason textbox")
+	public void user_enter_the_in_reason_textbox(String reason) {
+		dataEntryForm3.enterReason(reason);
+	}
+
+	@When("user click on ok button")
+	public void user_click_on_ok_button() {
+		auditLogDataEntry.clickOnSuccessButton();
+	}
+
+	@Then("verify that {string} deleted log should be displayed with today date")
+	public void verify_that_deleted_log_should_be_displayed_with_today_date(String message) {
+		dataEntryForm3.verifyMessage(message);
+	}
+
+	@Then("verify that Respiratory Rate should be deleted displayed into the data entry point")
+	public void verify_that_respiratory_rate_should_be_deleted_displayed_into_the_data_entry_point() {
+		auditLogDataPoint.clickOnDataPoint();
+		auditLogDataPoint.verifyRespiratoryRateDeleteMessageInDataPoint();
+	}
+
+	@Then("verify that row id dropdown filter should be displayed")
+	public void verify_that_row_id_dropdown_filter_should_be_displayed() {
+		dataEntryForm3.verifyRowId();
+	}
+
+	@Then("verify that search button should be displayed")
+	public void verify_that_search_button_should_be_displayed() {
+		dataEntryForm3.verifySearchButton();
+	}
+
+	@Then("verify that clear filter for form button should be displayed")
+	public void verify_that_clear_filter_for_form_button_should_be_displayed() {
+		dataEntryForm3.verifyClearFitlerButton();
 	}
 
 }
