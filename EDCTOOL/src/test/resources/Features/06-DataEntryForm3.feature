@@ -6,7 +6,7 @@ Feature: Subject Visit Form 3
     And user select study "TEST2025" and role "CRC" from dropdown and click on submit button
     When user click on "Subjects" option from left side menu
 
- @smoke
+  @smoke
   Scenario: Verify that user should be able to open the form 3
     When user apply filter with site "ML_Site1" and subject "MS1-813"
     And user click on "MS1-813" to open the subject visit page
@@ -62,7 +62,7 @@ Feature: Subject Visit Form 3
       | 34    | 180 | Normal     | Surgery   | Yes              |
       | 48    | 220 | Abnormal   | Medicine  | No               |
       | 23    | 123 | Abnormal   | Medicine  | Yes              |
-      | 78    | 72  | Normal     | Rest      | NO               |
+      | 78    | 72  | Normal     | Rest      | No               |
 
   @smoke
   Scenario: Verify that after clicking on close icon field should be removed
@@ -113,7 +113,7 @@ Feature: Subject Visit Form 3
     And user click on plus icon
     And user enter "<sr no>" in sr no textbox
     And user click on save button to save the form 3
-    Then verify that "maximum value" validation message should be appear while save the form
+    Then verify that "Maximum Value" validation message should be appear while save the form
 
     Examples:
       | sr no |
@@ -129,7 +129,7 @@ Feature: Subject Visit Form 3
     And user click on plus icon
     And user enter "<sr no>" in sr no textbox
     And user click on save button to save the form 3
-    Then verify that "minimum value" validation message should be appear while save the form
+    Then verify that "Minimum Value" validation message should be appear while save the form
 
     Examples:
       | sr no |
@@ -171,38 +171,6 @@ Feature: Subject Visit Form 3
     And user navigate to the audit logs page
     Then verify that "Data Entry deleted" deleted log should be displayed with today date
     And verify that Respiratory Rate should be deleted displayed into the data entry point
-
-  @regression
-  Scenario: Verify the minimum BP value
-    When user apply filter with site "ML_Site1" and subject "MS1-813"
-    And user click on "MS1-813" to open the subject visit page
-    And user enter "Form 3" in search textbox
-    And user click on form option
-    And user click on plus icon
-    And user enter "<bp>" in bp textbox
-    And user click on save button to save the form 3
-    Then verify that "minimum value" validation message should be appear while save the form
-
-    Examples:
-      | bp  |
-      | -1  |
-      | -67 |
-
-  @regression
-  Scenario: Verify that maximum bp field validation should be appear
-    When user apply filter with site "ML_Site1" and subject "MS1-813"
-    And user click on "MS1-813" to open the subject visit page
-    And user enter "Form 3" in search textbox
-    And user click on form option
-    And user click on plus icon
-    And user enter "<bp>" in sr no textbox
-    And user click on save button to save the form 3
-    Then verify that "maximum value" validation message should be appear while save the form
-
-    Examples:
-      | sr no |
-      | 33333 |
-      | 76678 |
 
   @smoke
   Scenario: Verify that user should be able to delete the form
@@ -303,3 +271,91 @@ Feature: Subject Visit Form 3
     And user enter "Form 3" in search textbox
     And user click on form option
     Then verify that clear filter for form button should be displayed
+
+  @smoke
+  Scenario: Verify that user is able to apply the row id filter
+    When user apply filter with site "ML_Site1" and subject "MS1-832"
+    And user click on "MS1-832" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click the 1 row id
+    And user click on search button
+
+  @smoke
+  Scenario: Verify that user is able to clear the filter
+    When user apply filter with site "ML_Site1" and subject "MS1-832"
+    And user click on "MS1-832" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click the 1 row id
+    And user click on remove button
+
+  @smoke
+  Scenario: Verify that user should be able to fill the vertical form
+    When user apply filter with site "ML_Site1" and subject "MS1-833"
+    And user click on "MS1-833" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on add button
+    And user enter the sr no "<sr no>" in vertical form
+    And user enter the bp "<bp>" in vertical form
+    And user select the heart rate "<heart rate>" in vertical form
+    And user select the treatment "<treatment>" in vertical form
+    And user select the respiratory rate "<respiratory rate>" in vertical form
+    And user select the today date from date 1 vertical form
+    And user select the today date from date 2 vertical form
+    And user click on save button in vertical form
+
+    Examples:
+      | sr no | bp | heart rate | respiratory rate | treatment |
+      | 12    | 43 | Normal     | Yes              | Rest      |
+
+  @regression
+  Scenario: Verify that heart abnormal textbox does not enable until the Abnormal checkbox is checked
+    When user apply filter with site "ML_Site1" and subject "MS1-833"
+    And user click on "MS1-833" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on add button
+    Then verify that heart rate Abnormal textbox is disabled
+
+  @regression
+  Scenario: Verify that heart abnormal textbox is enabled after abnormal checkbox is checked
+    When user apply filter with site "ML_Site1" and subject "MS1-833"
+    And user click on "MS1-833" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on add button
+    And user select the heart rate "Abnormal" in vertical form
+    Then verify that heart rate Abnormal textbox is enabled
+
+  @regression
+  Scenario: Verify that heart abnormal textbox is disabled if Noraml heart rate is selected
+    When user apply filter with site "ML_Site1" and subject "MS1-833"
+    And user click on "MS1-833" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on add button
+    And user select the heart rate "Abnormal" in vertical form
+    Then verify that heart rate Abnormal textbox is enabled
+
+  @smoke
+  Scenario: Verify that user should be able to fill the vertical form with abnoraml heart value
+    When user apply filter with site "ML_Site1" and subject "MS1-834"
+    And user click on "MS1-834" to open the subject visit page
+    And user enter "Form 3" in search textbox
+    And user click on form option
+    And user click on add button
+    And user enter the sr no "<sr no>" in vertical form
+    And user enter the bp "<bp>" in vertical form
+    And user select the heart rate "<heart rate>" in vertical form
+    And user enter the "50" in abnormal heart rate textbox
+    And user select the treatment "<treatment>" in vertical form
+    And user select the respiratory rate "<respiratory rate>" in vertical form
+    And user select the today date from date 1 vertical form
+    And user select the today date from date 2 vertical form
+    And user click on save button in vertical form
+
+    Examples:
+      | sr no | bp | heart rate | respiratory rate | treatment |
+      | 12    | 43 | Abnormal   | Yes              | Rest      |

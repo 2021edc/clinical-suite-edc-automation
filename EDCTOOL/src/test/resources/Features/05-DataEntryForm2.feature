@@ -113,7 +113,7 @@ Feature: Subject Visit Form2
     Examples:
       | hrs | mins | sec | ampm |
       | 11  | 13   | 14  | AM   |
-      | 06  | 43   | 58  | pm   |
+      | 06  | 43   | 58  | PM   |
       | 03  | 09   | 27  | AM   |
       | 07  | 12   | 45  | PM   |
       | 10  | 10   | 10  | PM   |

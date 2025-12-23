@@ -35,7 +35,7 @@ Feature: Subject
     And select the "ML_Site1" option from site dropdown
     And user remove the default from subject name textbox
     And user click on save button
-    Then Verify that "Please enter a subject ID" error message should be displayed in toaster
+    Then Verify that "Please enter a Subject ID" error message should be displayed in toaster
 
   @regression
   Scenario: Verify that error message should be displayed if add the space input in subject name
@@ -53,6 +53,7 @@ Feature: Subject
 
   @smoke
   Scenario: Verify that Subject visit page should be opened
+    When user apply filter with site "ML_Site1" and subject "MS1-811"
     When user click on "MS1-811" to open the subject visit page
     Then verify that subject visit page should be opened
 

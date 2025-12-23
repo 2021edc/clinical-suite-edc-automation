@@ -204,4 +204,74 @@ public class Steps_DataEntryForm3 {
 		dataEntryForm3.verifyClearFitlerButton();
 	}
 
+	@When("user click the 1 row id")
+	public void user_enter_the_row_id() {
+		dataEntryForm3.clickOnRowId();
+	}
+
+	@When("user click on search button")
+	public void user_click_on_search_button() {
+		dataEntryForm3.clickOnSearch();
+	}
+
+	@When("user click on remove button")
+	public void user_click_on_remove_button() {
+		dataEntryForm3.clickOnClearSearch();
+	}
+
+	@When("user select the today date from date 1 vertical form")
+	public void user_select_the_today_date_from_date_vertical_form() {
+		dataEntryForm3.clickOnDate1();
+	}
+
+	@When("user enter the sr no {string} in vertical form")
+	public void user_enter_the_sr_no_in_vertical_form(String srNo) {
+		dataEntryForm3.enterSrNo(srNo);
+	}
+
+	@When("user enter the bp {string} in vertical form")
+	public void user_enter_the_bp_in_vertical_form(String bp) {
+		dataEntryForm3.enterBp(bp);
+	}
+
+	@When("user select the heart rate {string} in vertical form")
+	public void user_select_the_heart_rate_in_vertical_form(String heartRate) {
+		dataEntryForm3.selectHeartRate(heartRate);
+	}
+
+	@When("user select the treatment {string} in vertical form")
+	public void user_select_the_treatment_in_vertical_form(String treatment) {
+		dataEntryForm3.selectTreatmentVertical(treatment);
+	}
+
+	@When("user select the respiratory rate {string} in vertical form")
+	public void user_select_the_respiratory_rate_in_vertical_form(String respiratoryRate) {
+	    dataEntryForm3.selectRespiratoryRate(respiratoryRate);
+	}
+
+	@When("user select the today date from date 2 vertical form")
+	public void user_select_the_today_date_from_date_2_vertical_form() {
+		dataEntryForm3.clickOnDate2();
+	}
+	
+	@When("user click on save button in vertical form")
+	public void user_click_on_save_button_in_vertical_form() {
+	   dataEntryForm3.clickOnSaveVertical();
+	}
+
+	@Then("verify that heart rate Abnormal textbox is disabled")
+	public void verify_that_heart_rate_abnormal_textbox_is_disabled() {
+	   dataEntryForm3.verifyDisableHeartRateTextbox();
+	}
+	
+	@Then("verify that heart rate Abnormal textbox is enabled")
+	public void verify_that_heart_rate_abnormal_textbox_is_enabled() {
+	   dataEntryForm3.verifyHeartRateTextboxIsEnabled();
+	}
+	
+	@When("user enter the {string} in abnormal heart rate textbox")
+	public void user_enter_the_in_abnormal_heart_rate_textbox(String heartRate) {
+		dataEntryForm3.enterAbnoramlHeartRate(heartRate);
+	}
+
 }

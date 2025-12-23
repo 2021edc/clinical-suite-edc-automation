@@ -1,5 +1,6 @@
 package com.edctool.po;
 
+import java.time.LocalDate;
 import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -73,7 +74,7 @@ public class DataEntryForm3 extends SeleniumActions {
 	@FindBy(css = "#reason")
 	private WebElement txtReason;
 	
-	@FindBy(css="[role='combobox']")
+	@FindBy(css="[placeholder='RowId']")
 	private WebElement ddlRowId;
 	
 	@FindBy(css="[title='1']")
@@ -84,6 +85,27 @@ public class DataEntryForm3 extends SeleniumActions {
 	
 	@FindBy(xpath="//*[text()='Clear Filter']")
 	private WebElement btnClearFilters;
+	
+	@FindBy(css="[title='Clear all']")
+	private WebElement clearAll;
+	
+	@FindBy(xpath="//div[contains(@class,'form-check')]//label[@class='form-check-label']//b")
+	private List<WebElement> lstTreatmentCategoryVertical;
+	
+	@FindBy(css="input[placeholder='DD/MMM/YYYY'][name='Date1']")
+	private WebElement date1;
+	
+	@FindBy(css="input[placeholder='DD/MMM/YYYY'][name='Date 2']")
+	private WebElement date2;
+	
+	@FindBy(css = "span.ngb-dp-day")
+	private List<WebElement> dateOption;
+	
+	@FindBy(css="div.card-footer button:nth-child(1)")
+	private WebElement btnSaveVertical;
+	
+	@FindBy(css="input[id='Heart Rate, if abnormal']")
+	private WebElement txtHeartRateAbnormal;
 
 	AssertUtils assertUtils = new AssertUtils();
 
@@ -117,6 +139,10 @@ public class DataEntryForm3 extends SeleniumActions {
 
 	public void selectTreatment(String option) {
 		selectValueFromList(lstTreatmentCheckbox, option);
+	}
+	
+	public void selectTreatmentVertical(String option) {
+		selectValueFromList(lstTreatmentCategoryVertical, option);
 	}
 
 	public void selectRespiratoryRate(String option) {
@@ -209,6 +235,7 @@ public class DataEntryForm3 extends SeleniumActions {
 	}
 	
 	public void clickOnRowId() {
+		staticWait(3);
 		clickOnElement(ddlRowId);
 		clickOnElement(lblRowIdFilter);
 	}
@@ -223,5 +250,51 @@ public class DataEntryForm3 extends SeleniumActions {
 	
 	public void verifyClearFitlerButton() {
 		assertUtils.isElementDisplayed(btnClearFilters);
+	}
+	
+	public void clickOnSearch() {
+		clickOnElement(btnSearch);
+	}
+	
+	public void clickOnclearFilter() {
+		clickOnElement(btnClearFilters);
+	}
+	
+	public void clickOnClearSearch() {
+		clickOnElement(clearAll);
+	}
+	
+	public int getTodayDate() {
+		LocalDate today = LocalDate.now();
+		int day = today.getDayOfMonth();
+		return day;
+	}
+
+	public void clickOnDate1() {
+		clickOnElement(date1);
+
+		selectValueFromList(dateOption, String.valueOf(getTodayDate()));
+	}
+	
+	public void clickOnDate2() {
+		clickOnElement(date2);
+
+		selectValueFromList(dateOption, String.valueOf(getTodayDate()));
+	}
+	
+	public void clickOnSaveVertical() {
+		clickOnElement(btnSaveVertical);
+	}
+	
+	public void verifyDisableHeartRateTextbox() {
+		assertUtils.isElementDisabled(txtHeartRateAbnormal, "disabled");
+	}
+	
+	public void verifyHeartRateTextboxIsEnabled() {
+		assertUtils.isElementEnabled(txtHeartRateAbnormal);
+	}
+	
+	public void enterAbnoramlHeartRate(String heartRate) {
+		enterTextIntoTextbox(txtHeartRateAbnormal, heartRate);
 	}
 }

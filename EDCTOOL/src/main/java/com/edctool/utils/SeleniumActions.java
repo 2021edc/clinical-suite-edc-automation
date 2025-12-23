@@ -1,5 +1,6 @@
 package com.edctool.utils;
 
+import java.io.File;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -14,6 +15,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.edctool.framework.WebBase;
+
+import net.bytebuddy.implementation.FieldAccessor.FieldNameExtractor;
 
 public class SeleniumActions extends WebBase {
 
@@ -56,17 +59,16 @@ public class SeleniumActions extends WebBase {
 	}
 
 	public void clickOnElementIfVisible(WebElement element) {
-	    WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+		WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 
-	    try {
-	        wait.until(ExpectedConditions.visibilityOf(element));
-	        wait.until(ExpectedConditions.elementToBeClickable(element));
-	        element.click();
-	    } catch (TimeoutException | StaleElementReferenceException e) {
-	        System.out.println("Element not visible or not clickable. Click skipped.");
-	    }
+		try {
+			wait.until(ExpectedConditions.visibilityOf(element));
+			wait.until(ExpectedConditions.elementToBeClickable(element));
+			element.click();
+		} catch (TimeoutException | StaleElementReferenceException e) {
+			System.out.println("Element not visible or not clickable. Click skipped.");
+		}
 	}
-
 
 	public void enterTextIntoTextbox(WebElement element, String text) {
 		waitForElementVisible(element);
@@ -116,5 +118,13 @@ public class SeleniumActions extends WebBase {
 	public void clickUsingJavascript(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) getDriver();
 		js.executeScript("arguments[0].click();", element);
+	}
+
+	public void uploadFile(WebElement element, String fileName) {
+		String projectPath = System.getProperty("user.dir");
+		String filePath = projectPath + File.separator + "DataFiles" + File.separator + fileName;
+
+		element.sendKeys(filePath);
+
 	}
 }

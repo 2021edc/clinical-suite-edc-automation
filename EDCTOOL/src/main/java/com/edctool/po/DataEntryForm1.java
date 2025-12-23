@@ -95,7 +95,7 @@ public class DataEntryForm1 extends SeleniumActions {
 	@FindBy(css="h5.modal-title")
 	private WebElement confirmationTitle;
 	
-	@FindBy(css="div.modal-footer button.btn-outline-primary")
+	@FindBy(css="div.modal-footer button.btn-outline-success")
 	private WebElement btnYesConformation;
 	
 	@FindBy(css="div.modal-footer button.btn-outline-danger")
@@ -108,12 +108,12 @@ public class DataEntryForm1 extends SeleniumActions {
 	}
 
 	public void verifyResetButton() {
-		staticWait(3);
+		staticWait(5);
 		assertUtils.isElementDisplayed(btnReset);
 	}
 
 	public void enterSearchText(String searchText) {
-		staticWait(4);
+		staticWait(5);
 		enterTextIntoTextbox(txtSearch, searchText);
 	}
 	

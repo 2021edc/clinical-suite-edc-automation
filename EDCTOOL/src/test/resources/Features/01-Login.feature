@@ -11,7 +11,7 @@ Feature: Login
   Scenario: Verify the login page title
     Then Verify that "EDC Tool" page title should be displayed
 
-  @regression
+  @regression @smoke99
   Scenario: Verify that validation message should be appear if username is not entered
     When user click on login button
     Then Verify that "Please enter your username" error message should be displayed
