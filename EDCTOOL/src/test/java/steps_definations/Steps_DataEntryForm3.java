@@ -273,5 +273,41 @@ public class Steps_DataEntryForm3 {
 	public void user_enter_the_in_abnormal_heart_rate_textbox(String heartRate) {
 		dataEntryForm3.enterAbnoramlHeartRate(heartRate);
 	}
+	
+	@When("user select the yesterday date from date {int} vertical form")
+	public void user_select_the_yesterday_date_from_date_vertical_form(Integer int1) {
+	   dataEntryForm3.clickOnYesterdayDate2();
+	}
+
+	@Then("verify that validation message should be appear")
+	public void verify_that_validation_message_should_be_appear() {
+	   dataEntryForm3.verifyDateValidation();
+	}
+	
+	@Then("verify that cancel button should be appear in warning popup")
+	public void verify_that_cancel_button_should_be_appear_in_warning_popup() {
+	    dataEntryForm3.verifyOkButton();
+	}
+
+	@Then("verify that Ok button should be appear in warning popup")
+	public void verify_that_ok_button_should_be_appear_in_warning_popup() {
+	    dataEntryForm3.verifyCancelButton();
+	}
+	
+	@When("user click on ok button from warning pop up")
+	public void user_click_on_ok_button_from_warning_pop_up() {
+	   dataEntryForm3.clickOnOkButton();
+	}
+
+	@When("user click on cancel button from warning pop up")
+	public void user_click_on_cancel_button_from_warning_pop_up() {
+	  dataEntryForm3.clickOnCancelButton();
+	}
+
+	@Then("verify that warning pop up should be closed")
+	public void verify_that_warning_pop_up_should_be_closed() {
+	   dataEntryForm3.verifyPopUpClosed();
+	}
+
 
 }

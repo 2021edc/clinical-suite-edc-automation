@@ -106,6 +106,15 @@ public class DataEntryForm3 extends SeleniumActions {
 	
 	@FindBy(css="input[id='Heart Rate, if abnormal']")
 	private WebElement txtHeartRateAbnormal;
+	
+	@FindBy(css="div[class='row'] div[class='col']")
+	private WebElement lblDateValidation;
+	
+	@FindBy(xpath="//button[@class='btn btn-outline-success no-focus']")
+	private WebElement btnOk;
+	
+	@FindBy(xpath="//button[@class='btn btn-outline-danger no-focus']")
+	private WebElement btnCancel;
 
 	AssertUtils assertUtils = new AssertUtils();
 
@@ -296,5 +305,39 @@ public class DataEntryForm3 extends SeleniumActions {
 	
 	public void enterAbnoramlHeartRate(String heartRate) {
 		enterTextIntoTextbox(txtHeartRateAbnormal, heartRate);
+	}
+	
+	public int getYesterdayDate() {
+	    LocalDate yesterday = LocalDate.now().minusDays(1);
+	    return yesterday.getDayOfMonth();
+	}
+
+	public void clickOnYesterdayDate2() {
+	    clickOnElement(date2);
+	    selectValueFromList(dateOption, String.valueOf(getYesterdayDate()));
+	}
+	
+	public void verifyDateValidation() {
+		assertUtils.isElementDisplayed(lblDateValidation);
+	}
+	
+	public void verifyOkButton() {
+		assertUtils.isElementDisplayed(btnOk);
+	}
+	
+	public void verifyCancelButton() {
+		assertUtils.isElementDisplayed(btnCancel);
+	}
+	
+	public void clickOnOkButton() {
+		clickOnElement(btnOk);
+	}
+	
+	public void clickOnCancelButton() {
+		clickOnElement(btnCancel);
+	}
+	
+	public void verifyPopUpClosed() {
+		assertUtils.isElementDisplayed(btnAdd);
 	}
 }
