@@ -100,3 +100,13 @@ Feature: Data Entry Form 4
     And user upload the "dummy.pdf" file
     Then verify that file should be uploaded
     And verify that pause button should be disabled
+
+  @regression
+  Scenario: Verify that  Date 1 is not equals to date 2  validation message should be appear
+    When user apply filter with site "ML_Site1" and subject "MS1-813"
+    And user click on "MS1-813" to open the subject visit page
+    And user enter "Form 4" in search textbox
+    And user click on form option
+    And user select yesterday date from date 1 in form
+    And user select the today date from date 2 in form
+    Then verify that validation message should be appear

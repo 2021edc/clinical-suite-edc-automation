@@ -73,4 +73,14 @@ public class Steps_DataEntryForm4 {
 	public void verify_that_pause_button_should_be_disabled() {
 		dataEntryForm4.verifyDisablePauseButton();
 	}
+	
+	@When("user select yesterday date from date {int} in form")
+	public void user_select_yesterday_date_from_date_in_form(Integer int1) {
+	   
+	}
+
+	@When("user select the today date from date {int} in form")
+	public void user_select_the_today_date_from_date_in_form(Integer int1) {
+	  
+	}
 }
