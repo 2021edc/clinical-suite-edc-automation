@@ -113,7 +113,7 @@ public class DataEntryForm1 extends SeleniumActions {
 	}
 
 	public void enterSearchText(String searchText) {
-		staticWait(5);
+		staticWait(7);
 		enterTextIntoTextbox(txtSearch, searchText);
 	}
 	

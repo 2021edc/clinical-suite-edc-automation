@@ -40,7 +40,7 @@ public class DataEntryForm4 extends SeleniumActions {
 	@FindBy(xpath = "//*[text()='Stop & Cancel']")
 	private WebElement btnStopAndCancel;
 
-	@FindBy(xpath = "input[placeholder='DD/MMM/YYYY'][name='D1']")
+	@FindBy(css = "input[placeholder='DD/MMM/YYYY'][name='D1']")
 	private WebElement date1;
 
 	@FindBy(xpath = "//input[@name='d2']")
@@ -48,6 +48,12 @@ public class DataEntryForm4 extends SeleniumActions {
 
 	@FindBy(css = "span.ngb-dp-day")
 	private List<WebElement> dateOption;
+	
+	@FindBy(css="input[placeholder='DD/MMM/YYYY'][name='D3']")
+	private WebElement date3;
+	
+	@FindBy(css="input[placeholder='DD/MMM/YYYY'][name='D4']")
+	private WebElement date4;
 
 	AssertUtils assertUtils = new AssertUtils();
 
@@ -115,17 +121,33 @@ public class DataEntryForm4 extends SeleniumActions {
 		return day;
 	}
 
-	public void clickOnDate2() {
+	public void clickOnYesterdayDate2() {
 		clickOnElement(date2);
-		selectValueFromList(dateOption, String.valueOf(getTodayDate()));
+		selectValueFromList(dateOption, String.valueOf(getYesterdayDate()));
 	}
 
+	public void clickOnTodayDate1() {
+		clickOnElement(date1);
+		selectValueFromList(dateOption, String.valueOf(getTodayDate()));
+	}
+	
 	public void clickOnYesterdayDate1() {
 		clickOnElement(date1);
 		selectValueFromList(dateOption, String.valueOf(getYesterdayDate()));
 	}
+
+	public void clickOnTodayDate2() {
+		clickOnElement(date2);
+		selectValueFromList(dateOption, String.valueOf(getTodayDate()));
+	}
 	
-	public void verifyErrorMessage() {
-		
+	public void clickOnTodayDate3() {
+		clickOnElement(date3);
+		selectValueFromList(dateOption, String.valueOf(getTodayDate()));
+	}
+	
+	public void clickOnTodayDate4() {
+		clickOnElement(date4);
+		selectValueFromList(dateOption, String.valueOf(getTodayDate()));
 	}
 }

@@ -27,11 +27,11 @@ public class AuditLogDataPoint extends SeleniumActions {
 	}
 	
 	public void verifyRespiratoryRateInDataPoint() {
-		assertUtils.validateTableColumnValueForToday(6, 13, "Respiratory Rate");
+		assertUtils.validateTableColumnValueForToday(7, 14, "Respiratory Rate");
 	}
 
 	public void verifyRespiratoryRateDeleteMessageInDataPoint() {
-		assertUtils.validateTableColumnValueForToday(9, 13, "DELETE");
+		assertUtils.validateTableColumnValueForToday(10, 14, "DELETE");
 	}
 	
 }

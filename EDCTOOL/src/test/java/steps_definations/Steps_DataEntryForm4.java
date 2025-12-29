@@ -1,5 +1,6 @@
 package steps_definations;
 
+import com.edctool.po.DataEntryForm3;
 import com.edctool.po.DataEntryForm4;
 
 import io.cucumber.java.en.Then;
@@ -8,6 +9,7 @@ import io.cucumber.java.en.When;
 public class Steps_DataEntryForm4 {
 
 	DataEntryForm4 dataEntryForm4 = new DataEntryForm4();
+	DataEntryForm3 dataEntryForm3= new DataEntryForm3();
 
 	@Then("verify that file upload option should be displayed")
 	public void verify_that_file_upload_option_should_be_displayed() {
@@ -73,14 +75,39 @@ public class Steps_DataEntryForm4 {
 	public void verify_that_pause_button_should_be_disabled() {
 		dataEntryForm4.verifyDisablePauseButton();
 	}
-	
-	@When("user select yesterday date from date {int} in form")
-	public void user_select_yesterday_date_from_date_in_form(Integer int1) {
-	   
+
+	@When("user select today date from date 1 in form")
+	public void user_select_today_date_from_date_in_form() {
+		dataEntryForm4.clickOnTodayDate1();
 	}
 
-	@When("user select the today date from date {int} in form")
-	public void user_select_the_today_date_from_date_in_form(Integer int1) {
-	  
+	@When("user select the yesterday date from date 2 in form")
+	public void user_select_the_yesterday_date_from_date_in_form() {
+		dataEntryForm4.clickOnYesterdayDate2();
+	}
+
+	@When("user select today date from date 2 in form")
+	public void user_select_today_date_from_date_2_in_form() {
+		dataEntryForm4.clickOnYesterdayDate1();
+	}
+
+	@When("user select the yesterday date from date 1 in form")
+	public void user_select_the_yesterday_date_from_date_1_in_form() {
+		dataEntryForm4.clickOnTodayDate2();
+	}
+	
+	@When("user select today date from date 3 in form")
+	public void user_select_today_date_from_date_3_in_form() {
+	   dataEntryForm4.clickOnTodayDate3();
+	}
+
+	@Then("verify that validation message should not be appear")
+	public void verify_that_validation_message_should_not_be_appear() {
+	    dataEntryForm3.verifyDateValidationNotAppear();
+	}
+
+	@When("user select today date from date 4 in form")
+	public void user_select_today_date_from_date_4_in_form() {
+	   dataEntryForm4.clickOnTodayDate4();
 	}
 }

@@ -158,7 +158,7 @@ Feature: Subject Visit Form 3
       | sr no | bp | heart rate | treatment | respiratory rate |
       | 1     | 12 | Normal     | Medicine  | Yes              |
 
-  @smoke
+  @smoke800
   Scenario: Verify that delete audit log should be displayed after deleting the form
     When user click on arrow to make the left menu sticky
     And user apply filter with site "ML_Site1" and subject "MS1-831"

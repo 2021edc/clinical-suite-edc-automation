@@ -127,7 +127,7 @@ public class SubjectPage extends SeleniumActions {
 
 	public void clickOnSubjectFilterDropdown() {
 		waitForClickOnElement(btnSearchFilter);
-		staticWait(2);
+		staticWait(4);
 		clickOnElement(btnSearchFilter);
 	}
 

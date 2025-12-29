@@ -105,6 +105,8 @@ public class AssertUtils extends SeleniumActions {
 		for (WebElement row : rows) {
 
 			String actualColumnValue = row.findElement(By.xpath("./td[" + columnIndex + "]")).getText().trim();
+			
+			System.out.println(actualColumnValue);
 
 			String dateTimeValue = row.findElement(By.xpath("./td[" + dateColumnIndex + "]")) // Date column
 					.getText().trim();

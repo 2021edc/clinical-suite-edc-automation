@@ -110,6 +110,9 @@ public class DataEntryForm3 extends SeleniumActions {
 	@FindBy(css="div[class='row'] div[class='col']")
 	private WebElement lblDateValidation;
 	
+	@FindBy(css="div[class='row'] div[class='col']")
+	private List<WebElement> lstDateValidation;
+	
 	@FindBy(xpath="//button[@class='btn btn-outline-success no-focus']")
 	private WebElement btnOk;
 	
@@ -159,6 +162,7 @@ public class DataEntryForm3 extends SeleniumActions {
 	}
 
 	public void clickOnSaveButton() {
+		staticWait(2);
 		clickOnElement(btnSave);
 	}
 
@@ -319,6 +323,10 @@ public class DataEntryForm3 extends SeleniumActions {
 	
 	public void verifyDateValidation() {
 		assertUtils.isElementDisplayed(lblDateValidation);
+	}
+	
+	public void verifyDateValidationNotAppear() {
+		assertUtils.isElementNotDisplayed(lstDateValidation);
 	}
 	
 	public void verifyOkButton() {
