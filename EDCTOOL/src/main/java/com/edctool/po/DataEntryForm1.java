@@ -41,7 +41,7 @@ public class DataEntryForm1 extends SeleniumActions {
 	@FindBy(css="i.forms-clear-btn")
 	private WebElement btnClear;
 	
-	@FindBy(css="input[id='155588']")
+	@FindBy(css="input[id='155588'][name='TV']")
 	private WebElement txtTextView;
 	
 	@FindBy(css="textarea[placeholder='Test']")
@@ -138,6 +138,7 @@ public class DataEntryForm1 extends SeleniumActions {
 	}
 	
 	public void enterTextView(String textView) {
+		waitForClickOnElement(txtTextView);
 		enterTextIntoTextbox(txtTextView, textView);
 	}
 	

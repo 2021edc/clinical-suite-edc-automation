@@ -121,4 +121,13 @@ public class AssertUtils extends SeleniumActions {
 				recordFound);
 	}
 
+	public void assertListEquals(List<String> expectedList, List<String> actualList) {
+
+		Assert.assertEquals("Actual list does not match expected list", actualList, expectedList);
+	}
+	
+	public void verifyListCount(List<WebElement> lstCount,int expectedCount) {
+		Assert.assertEquals(lstCount.size(), expectedCount);
+	}
+
 }

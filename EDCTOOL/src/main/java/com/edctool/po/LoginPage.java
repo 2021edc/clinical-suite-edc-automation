@@ -30,9 +30,11 @@ public class LoginPage extends SeleniumActions {
 	@FindBy(css = "div.text-danger")
 	private WebElement lblErrorMessage;
 	
+	@FindBy(css="div.text-danger")
+	private List<WebElement> lstErrorMessage;
+	
 	@FindBy(css = "div[role='alert']")
 	private WebElement lblErrorMessageToaster;
-
 
 	@FindBy(css = "h5.loginH5")
 	private WebElement lblStudyAndRole;
@@ -118,6 +120,9 @@ public class LoginPage extends SeleniumActions {
 	
 	public void selectValueFromDropdown(String option) {
 		selectValueFromList(selectOption, option);
+		if(lstErrorMessage.size() > 0) {
+			selectValueFromList(selectOption, option);
+		}
 	}
 	
 	public void enterStudy(String study) {

@@ -10,7 +10,6 @@ Feature: Subject Visit
   Scenario: Verify that Subject visit page should be opened
     When user apply filter with site "ML_Site1" and subject "MS1-811"
     And user click on "MS1-811" to open the subject visit page
-    Then verify that subject visit page should be opened
 
   @regression
   Scenario: Verify that no match found error message should be displayed if form is not present

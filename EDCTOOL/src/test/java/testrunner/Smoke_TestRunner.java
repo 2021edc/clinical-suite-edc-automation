@@ -9,7 +9,7 @@ import org.junit.platform.suite.api.Suite;
 @IncludeEngines("cucumber")
 @SelectClasspathResource("Features")
 @ConfigurationParameter(key = "cucumber.glue", value = "steps_definations")
-@ConfigurationParameter(key = "cucumber.plugin", value = "pretty, html:target/cucumber-smoke-27-test-report.html")
+@ConfigurationParameter(key = "cucumber.plugin", value = "pretty, html:target/cucumber-1-Jan-test-report.html")
 
 public class Smoke_TestRunner {
 
