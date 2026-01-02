@@ -286,12 +286,12 @@ public class Steps_DataEntryForm3 {
 	
 	@Then("verify that cancel button should be appear in warning popup")
 	public void verify_that_cancel_button_should_be_appear_in_warning_popup() {
-	    dataEntryForm3.verifyOkButton();
+	    dataEntryForm3.verifyCancelButton();
 	}
 
 	@Then("verify that Ok button should be appear in warning popup")
 	public void verify_that_ok_button_should_be_appear_in_warning_popup() {
-	    dataEntryForm3.verifyCancelButton();
+	    dataEntryForm3.verifyOkButton();
 	}
 	
 	@When("user click on ok button from warning pop up")

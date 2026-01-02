@@ -93,3 +93,57 @@ Feature: Query
     And user click on save button to save the form
     And user click on No button
     Then verify that help text should be displayed
+
+  @smoke
+  Scenario: Verify that user is able to save the query form
+    When user apply filter with site "ML_Site1" and subject "Query Form Test"
+    And user click on "Query Form Test" to open the subject visit page
+    And user remove the text from the textview textbox
+    And user click on save button to save the form
+    And user select the "Source changed" from common reason dropdown
+    And user click on yes button
+    And user enter the "test textview" in the textview textbox
+    And user click on save button to save the form
+    Then verify that Updated data points pop up should be displayed
+    When user select the "Wrongly entered" from common reason dropdown
+    And user click on yes button
+    Then verify that query pop up should be closed
+    And verify that "test textview" text should be displayed in textview textbox
+    And verify that query close icon should be displayed
+
+  @regression
+  Scenario: Verify that query pop up should be opened after clicking on open Query icon
+    When user apply filter with site "ML_Site1" and subject "MS1-850"
+    And user click on "MS1-850" to open the subject visit page
+    And user click on Query open icon
+    Then verify that "Query (Textview )" should be displayed as query title in query pop up
+
+  @regression
+  Scenario: Verify that Field name textview should be displayed in open query pop up
+    When user apply filter with site "ML_Site1" and subject "MS1-850"
+    And user click on "MS1-850" to open the subject visit page
+    And user click on Query open icon
+    Then verify that "Textview" field name should be displayed
+
+  @smoke
+  Scenario: Verify that cancel button should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-850"
+    And user click on "MS1-850" to open the subject visit page
+    And user click on Query open icon
+    Then verify that cancel button should be appear in query pop up
+
+  @smoke
+  Scenario: Verify that pop up should be closed after clicking on cancel button
+    When user apply filter with site "ML_Site1" and subject "MS1-850"
+    And user click on "MS1-850" to open the subject visit page
+    And user click on Query open icon
+    And user click on cancel button from query pop up
+    Then verify that help text should be displayed
+
+  @smoke
+  Scenario: Verify the fields header for the query
+    When user apply filter with site "ML_Site1" and subject "MS1-850"
+    And user click on "MS1-850" to open the subject visit page
+    And user click on Query open icon
+    And user click on QN label
+    Then verify that "Query Message", "Query Status", "Assigned By", "Assigned To" and "Created Date/Time" labels should be displayed

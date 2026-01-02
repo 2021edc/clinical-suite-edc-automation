@@ -158,4 +158,10 @@ public class Steps_DataEntryForm1 {
 	public void verify_that_yes_button_should_be_displayed_in_confirmation_popup() {
 	   subjectVisit.verifyYesButtonInConfirmationPopup();
 	}
+	
+	@When("user remove the text from the textview textbox")
+	public void user_remove_the_text_from_the_textview_textbox() {
+	   subjectVisit.clearTextView();
+	}
+
 }

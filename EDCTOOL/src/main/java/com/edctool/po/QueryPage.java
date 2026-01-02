@@ -43,10 +43,35 @@ public class QueryPage extends SeleniumActions {
 	
 	@FindBy(css="#queryModalClose")
 	private WebElement btnNo;
+	
+	@FindBy(css="input[id='155588'][name='TV']")
+	private WebElement txtTextView;
+	
+	@FindBy(css="[title='Query Close']")
+	private WebElement queryCloseIcon;
+	
+	@FindBy(xpath="//div[1]/div[1]/div/button[1]")
+	private WebElement textViewQueryValidationIcon;
+	
+	@FindBy(css="h5[class='modal-title']")
+	private WebElement lblQueryModal;
+	
+	@FindBy(xpath="//div[@class='modal-body py-0']//div[2]//p[2]")
+	private WebElement lblQueryField;
+	
+	@FindBy(css="#closePopup")
+	private WebElement btnCancel;
+	
+	@FindBy(css="div[role='heading'] > button")
+	private WebElement btnQNArea;
+	
+	@FindBy(css="thead > tr > th")
+	private List<WebElement> lstHeadersQN;
 
 	AssertUtils assertUtils = new AssertUtils();
 
 	public void verifyAllFieldQuery(ArrayList<String> expectedList) {
+		staticWait(2);
 		List<String> actualList = new ArrayList<String>();
 
 		for (WebElement element : lstQueryLabel) {
@@ -94,5 +119,53 @@ public class QueryPage extends SeleniumActions {
 	
 	public void clickOnNoButton() {
 		clickOnElement(btnNo);
+	}
+	
+	public void verifyCloseQueryPopup() {
+		assertUtils.isElementNotDisplayed(lstQueryLabel);
+	}
+	
+	public void verifyTextViewText(String text) {
+		assertUtils.assertEquals(getAttrtibuteValue(txtTextView, "value"), text);
+	}
+	
+	public void queryCloseIcon() {
+		assertUtils.isElementDisplayed(queryCloseIcon);
+	}
+	
+	public void clickOnTextViewOpEnQueryIcon() {
+		waitForClickOnElement(textViewQueryValidationIcon);
+		clickOnElement(textViewQueryValidationIcon);
+	}
+	
+	public void verifyQueryModalTitle(String title) {
+		assertUtils.assertEquals(getVisibleText(lblQueryModal), title);
+	}
+	
+	public void verifyFieldNameQueryLabel(String label) {
+		waitForElementVisible(lblQueryField);
+		assertUtils.assertContainsMessage(lblQueryField, label);
+	}
+	
+	public void verifyCancelButton() {
+		assertUtils.isElementDisplayed(btnCancel);
+	}
+	
+	public void clickOnCancelButton() {
+		clickOnElement(btnCancel);
+	}
+	
+	public void clickOnQNArea() {
+		staticWait(5);
+		clickUsingJavascript(btnQNArea);
+	}
+	
+	public void verifyQueryListHeaderItem(List<String> expectedList) {
+		List<String> actualList = new ArrayList<String>();
+
+		for (WebElement element : lstHeadersQN) {
+			actualList.add(getVisibleText(element));
+		}
+		assertUtils.assertListEquals(actualList, expectedList);
 	}
 }

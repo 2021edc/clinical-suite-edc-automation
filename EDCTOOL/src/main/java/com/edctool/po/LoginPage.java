@@ -29,10 +29,10 @@ public class LoginPage extends SeleniumActions {
 
 	@FindBy(css = "div.text-danger")
 	private WebElement lblErrorMessage;
-	
-	@FindBy(css="div.text-danger")
+
+	@FindBy(css = "div.text-danger")
 	private List<WebElement> lstErrorMessage;
-	
+
 	@FindBy(css = "div[role='alert']")
 	private WebElement lblErrorMessageToaster;
 
@@ -47,19 +47,18 @@ public class LoginPage extends SeleniumActions {
 
 	@FindBy(css = "button[type='reset']")
 	private WebElement btnCancel;
-	
-	@FindBy(css="div[role='option'] span")
+
+	@FindBy(css = "div[role='option'] span")
 	private List<WebElement> selectOption;
 
-	@FindBy(css="[ng-reflect-placeholder='Select Study'] input[type='text']")
+	@FindBy(css = "[ng-reflect-placeholder='Select Study'] input[type='text']")
 	private WebElement txtStudy;
-	
-	@FindBy(css="[ng-reflect-placeholder='Select Role'] input[type='text']")
+
+	@FindBy(css = "[ng-reflect-placeholder='Select Role'] input[type='text']")
 	private WebElement txtRole;
-	
-	@FindBy(css="div.ng-option")
+
+	@FindBy(css = "div.ng-option")
 	private WebElement lblErrorOption;
-	
 
 	public void verifyLoginPageHeader(String header) {
 		assertUtils.assertEquals(getVisibleText(loginPageHeader), header);
@@ -76,7 +75,7 @@ public class LoginPage extends SeleniumActions {
 	public void verifyErrorMessage(String message) {
 		assertUtils.assertEquals(getVisibleText(lblErrorMessage), message);
 	}
-	
+
 	public void verifyErrorMessageToaster(String message) {
 		assertUtils.assertEquals(getVisibleText(lblErrorMessageToaster), message);
 	}
@@ -108,31 +107,43 @@ public class LoginPage extends SeleniumActions {
 	public void clickOnCancelButton() {
 		clickOnElement(btnCancel);
 	}
-	
+
 	public void selectStudy() {
 		staticWait(1);
 		clickOnElement(ddlStudy);
 	}
-	
+
 	public void selectRole() {
 		clickOnElement(ddlRole);
 	}
-	
+
 	public void selectValueFromDropdown(String option) {
-		selectValueFromList(selectOption, option);
-		if(lstErrorMessage.size() > 0) {
+
+		int maxRetries = 3;
+		int attempt = 0;
+
+		while (attempt < maxRetries) {
+
 			selectValueFromList(selectOption, option);
+
+			// Exit loop if no error message is displayed
+			if (lstErrorMessage.size() == 0) {
+				break;
+			}
+
+			attempt++;
+			staticWait(1); // small wait before retry
 		}
 	}
-	
+
 	public void enterStudy(String study) {
 		enterTextIntoTextbox(txtStudy, study);
 	}
-	
+
 	public void enterRole(String role) {
 		enterTextIntoTextbox(txtRole, role);
 	}
-	
+
 	public void validateErrorMessage(String message) {
 		assertUtils.assertEquals(getVisibleText(lblErrorOption), message);
 	}

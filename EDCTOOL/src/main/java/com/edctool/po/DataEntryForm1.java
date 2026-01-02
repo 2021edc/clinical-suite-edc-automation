@@ -2,6 +2,7 @@ package com.edctool.po;
 
 import java.util.List;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -139,6 +140,7 @@ public class DataEntryForm1 extends SeleniumActions {
 	
 	public void enterTextView(String textView) {
 		waitForClickOnElement(txtTextView);
+		staticWait(3);
 		enterTextIntoTextbox(txtTextView, textView);
 	}
 	
@@ -224,5 +226,11 @@ public class DataEntryForm1 extends SeleniumActions {
 	
 	public void verifyYesButtonInConfirmationPopup() {
 		assertUtils.isElementDisplayed(btnYesConformation);
+	}
+	
+	public void clearTextView() {
+		waitForClickOnElement(txtTextView);
+		txtTextView.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+		txtTextView.sendKeys(Keys.DELETE);
 	}
 }
