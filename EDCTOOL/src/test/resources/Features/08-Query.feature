@@ -147,3 +147,30 @@ Feature: Query
     And user click on Query open icon
     And user click on QN label
     Then verify that "Query Message", "Query Status", "Assigned By", "Assigned To" and "Created Date/Time" labels should be displayed
+
+  @smoke
+  Scenario: Verify that Respond button should be displayed
+    When user apply filter with site "ML_Site1" and subject "MS1-850"
+    And user click on "MS1-850" to open the subject visit page
+    And user click on Query open icon
+    And user click on QN label
+    Then verify that respond button should be displayed
+
+  @regression
+  Scenario: Verify that select status should be disabled in respond section
+    When user apply filter with site "ML_Site1" and subject "MS1-850"
+    And user click on "MS1-850" to open the subject visit page
+    And user click on Query open icon
+    And user click on QN label
+    And user click on respond button
+    Then verify that status dropdown should be disabled
+
+  @regression
+  Scenario: Verify that after clicking on cancel button it should close the query respond fields
+    When user apply filter with site "ML_Site1" and subject "MS1-850"
+    And user click on "MS1-850" to open the subject visit page
+    And user click on Query open icon
+    And user click on QN label
+    And user click on respond button
+    And user click on cancel button from respond query pop up
+    Then verify that respond button should be displayed

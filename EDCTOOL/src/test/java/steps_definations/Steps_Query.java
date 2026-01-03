@@ -128,4 +128,24 @@ public class Steps_Query {
 		
 		queryPage.verifyQueryListHeaderItem(expectedHeaderList);
 	}
+	
+	@Then("verify that respond button should be displayed")
+	public void verify_that_respond_button_should_be_displayed() {
+	   queryPage.verifyRespondButton();
+	}
+	
+	@When("user click on respond button")
+	public void user_click_on_respond_button() {
+	  queryPage.clickOnRespondButton();
+	}
+
+	@Then("verify that status dropdown should be disabled")
+	public void verify_that_status_dropdown_should_be_disabled() {
+	   queryPage.verifyDisableSelectResponse();
+	}
+
+	@When("user click on cancel button from respond query pop up")
+	public void user_click_on_cancel_button_from_respond_query_pop_up() {
+	    queryPage.clickOnRespondCancel();
+	}
 }
